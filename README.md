@@ -25,3 +25,17 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+## NavBar
+
+Se agrego la barra de navegacion desde app.component.html haciendo uso de css y html.
+
+![image](https://github.com/ABOK451/control-horarios/assets/143243212/c45aeb17-ff42-4a33-bf49-375b5c516168)
+
+## Rutas
+
+Se creo el componente home para el testeo de la NavBar.
+
+![image](https://github.com/ABOK451/control-horarios/assets/143243212/d33d771c-7137-4671-8843-a324242931c2)
+
+
