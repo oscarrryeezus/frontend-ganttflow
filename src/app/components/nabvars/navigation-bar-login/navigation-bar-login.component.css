@@ -1,0 +1,133 @@
+.material-symbols-outlined{
+  display: flex;
+  margin-left: auto;
+  }
+
+  .esp {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0; 
+    width: 100%; 
+    z-index: 3;
+  }
+a{
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+}
+
+.scroll-hide {
+  display: none;
+}
+
+.fixed-top {
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 999;
+  border-radius: 10px;
+}
+
+  .acc{
+    text-decoration: none;
+    right: 1.6%;
+    height: 12.5%;
+    position: fixed;
+    display: flex;
+    align-items: center;
+    color: #000000;
+  }
+
+.app {
+    font-weight: 800;
+    font-size: 125%;
+    /* Agrega padding-top para dejar espacio para la barra de navegación */
+    padding-top: 70px; /* Puedes ajustar este valor según sea necesario */
+    
+}
+  .top-logo {
+    background-color: #ffffff;
+    width: auto;
+    height: 70px;
+    margin: auto;  
+  }
+
+  .top-bar {
+    background-color: #011245;
+    color: white;
+    left: 0;
+    right: 0;
+    width: auto;
+    margin: auto;
+    justify-content: space-between;
+    z-index: 2;
+  }
+
+  .menu {
+    justify-content: center;
+    list-style: none;
+    display: flex;
+    height: 3.5em;
+}
+
+.menu li:hover .menu-ver{
+  display: block;
+}
+
+.boton-left {
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+    padding: 0.9em 2em;
+    background-color: #011245;
+    color: white;
+    text-decoration: none;
+    border-top: none;
+    border-bottom: none;
+}
+
+.boton-left:hover{
+    background-color: #003366;
+}
+
+
+@media screen and (max-width: 690px) {
+  /* Estilos para pantallas con ancho máximo de 690px (dispositivos móviles) */
+  .menu {
+    flex-direction: column; /* Alinea los elementos en columna */
+    position: absolute;
+    top: 70px; /* Altura del menú cuando es desplegable */
+    right: 20px; /* Alineación a la derecha */
+    background-color: #011245;
+    z-index: 10;
+  }
+
+  .menu a {
+    display: block;
+    padding: 12px 20px;
+    border-bottom: 1px solid white;
+    color: white;
+    text-decoration: none;
+  }
+
+  .menu a:hover {
+    background-color: #003366;
+  }
+
+  .not {
+    position: relative;
+  } 
+}
+
+@media screen and (max-width: 900px) {
+  /* Ocultar el botón "Administración" cuando el ancho de la pantalla es igual o menor a 900px */
+  .boton-soli {
+    display: none; /* Oculta el botón "Administración" */
+  }
+}
+
+@media screen and (max-width: 1040px) {
+  /* Ocultar el botón "Calendario" cuando el ancho de la pantalla es igual o menor a 1200px */
+  .boton {
+    display: none; /* Oculta el botón "Calendario" */
+  }
+}

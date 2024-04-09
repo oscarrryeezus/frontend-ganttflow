@@ -1,0 +1,13 @@
+<app-navigation-bar-login></app-navigation-bar-login>
+
+
+<img src="assets/fondo-login.jpg">
+<div class="pos">
+  <div class="login-container">
+    <form (ngSubmit)="onSubmit()">
+        <input class="cont" type="email" id="email" name="email" [(ngModel)]="email" placeholder="Correo" style="font-size: 100%; text-align: center;" required>
+        <input class="cont" type="password" id="password" name="password" [(ngModel)]="password" placeholder="Contraseña" style="font-size: 100%; text-align: center;" required>
+      <button type="submit" style="font-weight: 800; font-size: 100%;">Ingresar</button>
+    </form>
+  </div>
+</div>

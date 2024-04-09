@@ -1,0 +1,57 @@
+<div class="esp" [ngClass]="{'scroll-hide': scrolled}">
+  <div class="top-logo">
+    <a href="inicio"><img src="assets/logo.jpeg" alt="Logo de la empresa" width="auto" height="70px" style="position: fixed;"></a>
+      <div class="menu-ver">
+        <a class="acc"> <span class="material-symbols-outlined" style=" font-size: 40px;">
+          account_circle
+          </span></a>
+          <div class="menu-ver-acc">
+              <a href="/datos">Datos</a>
+              <a href="login" (click)="salir()">Salir</a>
+          </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="app" [ngClass]="{'fixed-top': scrolled}">
+    <div class="top-bar">
+        <div class="menu">
+            <a href="/inicio" class="boton">Inicio</a>
+            <div class="dropdown">
+              <a class="boton-soli" (click)="toggleDropdowns()" style="height: 42px;">Solicitudes</a>
+              <div class="dropdown-menu" [ngClass]="{'show': dropdownVisibles}">
+                <div class="dropdown-content">
+                  <a style="padding: 3px 41px;" href="/solicitud-cambio-horario">Turno</a>
+                  <a style="padding: 3px 41px;" href="/solicitud-vacaciones">Vacaciones</a>
+                </div>
+              </div>
+            </div>
+            <a href="#" class="boton-gan">Gantt</a>
+
+            <button (click)="toggleDropdown()" class="dropdown-button boton">
+              <span class="material-symbols-outlined">
+                lists
+                </span>
+            </button>
+        </div>
+
+        <div>
+          <div class="dropdown-menu" [ngClass]="{'show': dropdownVisible}">
+          <a href="/inicio" class="boton2">Inicio</a>
+          <div class="dropdown">
+            <a class="boton-soli2" (click)="toggleDropdownss()" style="height: 42px;">Solicitudes</a>
+            <div class="dropdown-menu" [ngClass]="{'show': dropdownVisibless}">
+              <div class="dropdown-content2">
+                <a style="padding: 3px 41px;" href="/solicitud-cambio-horario">Turno</a>
+                <a style="padding: 3px 41px;" href="/solicitud-vacaciones">Vacaciones</a>
+              </div>
+            </div>
+          </div>
+          <a href="#" class="boton-gan2" >Gantt</a>
+      </div>
+    </div>
+      
+    </div>
+  </div>
+  
+  

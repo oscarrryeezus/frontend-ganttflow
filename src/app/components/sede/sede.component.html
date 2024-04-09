@@ -1,0 +1,50 @@
+<app-navigation-bar-login *ngIf="navbarLogin" class="barra"></app-navigation-bar-login>
+<app-navigation-bar-admin *ngIf="navBarAdmin" class="barra"></app-navigation-bar-admin>
+<app-navigation-bar-empleado *ngIf="navBarEmpleado" class="barra"></app-navigation-bar-empleado>
+<app-navigation-bar-superadmin *ngIf="navBarSuper" class="barra"></app-navigation-bar-superadmin>
+
+<div class="background-color">
+  <div class="container">
+      <div class="bar">
+        <h1>Registro Ciudad</h1>
+      </div>
+
+    <form class="form" #sedeForm="ngForm" (ngSubmit)="guardarSede()">
+      <div class="form-column">
+        <label for="nombre">Nombre de la ciudad:</label>
+        <input type="text" id="nombre" name="nombre" [(ngModel)]="sede.region" required>
+      </div>
+
+      <div class="form-column">
+        <label for="ubicacion">Ubicación:</label>
+        <input type="text" id="ubicacion" name="ubicacion" [(ngModel)]="sede.pais" required>
+      </div>
+
+      <div class="form-column">
+        <button type="submit" > {{ modoEdicion ? 'Actualizar':'Crear' }} sede</button>
+      </div>
+      <div class="form-column">
+        <button type="button" class="text-1-1" (click)="cancelarEdicion()" *ngIf="modoEdicion">Cancelar</button>
+      </div>
+    </form>
+
+    <div class="bar">
+      <h1>Ciudades Registradas</h1>
+    </div>
+
+    <div class="administradores-list">
+      <ul class="administrador-item" *ngFor="let sedeData of sedes">
+        <div class="administrador-details">
+          <div class="administrador-info">
+          <div class="administrador-name">{{ sedeData.region }}</div>
+          <div class="administrador-data">{{ sedeData.pais }}</div>
+          </div>
+          <td>
+            <button class="edit" (click)="editarSede(sedeData)">Editar</button>
+            <button class="delete" (click)="eliminarSede(sedeData.region)">Eliminar</button>
+          </td>
+          </div>
+      </ul>
+    </div>
+  </div>
+</div>

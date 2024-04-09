@@ -1,0 +1,69 @@
+.pos {
+    position: relative;
+    z-index: 10;
+}
+
+img {
+    position: fixed;
+    left: 0; 
+    top: 20.2%;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.login-container {
+    display: flex;
+    width: 30%;
+    margin-top: 7%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 30px 20px 30px;
+    border: 6px solid #ffffff;
+    border-radius: 15px;
+    background-color: #133393;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.login-container form {
+    width: 100%; /* Hacer que el formulario ocupe todo el ancho del contenedor */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.login-container label {
+    font-weight: bold;
+}
+
+.cont{
+    width: 100% ; /* Restar 20px del ancho total del contenedor */
+    margin: 20px; /* Agregar espacio entre los elementos del formulario */
+    padding: 10px; /* Ajustar el espaciado interno de los campos de entrada */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+
+}
+
+.login-container button {
+    width: 60%; /* Hacer que el ancho del botón sea igual al ancho del formulario menos el padding */
+    margin-top: 10px; /* Agregar espacio entre el último campo de entrada y el botón */
+    padding: 10px 0;
+    border: 2px solid #ffffff;
+    border-radius: 5px;
+    background-color: #011245;
+    color: #fff;
+    cursor: pointer;
+}
+
+.login-container button:hover {
+    background-color: #0056b3;
+}

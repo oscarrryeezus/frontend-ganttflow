@@ -1,2 +1,97 @@
+.pos {
+    position: relative;
+    z-index: 10;
+}
+.barra{
+    position: relative;
+    z-index: 11;
+}
 
-  
+/* Estilos para la imagen */
+img {
+    position: fixed;
+    left: 0; 
+    top: 20.2%;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.divazuljajamelapelas{
+    position: fixed;
+    left: 0; 
+    top: 20.2%;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    background-color: rgb(137, 0, 7); /* Puedes cambiar "blue" por cualquier otro color que desees */
+    opacity: .2;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "M PLUS Rounded 1c", sans-serif;
+    font-weight: 800;
+    font-style: normal;
+    font-size: 20px;
+}
+.top-logo {
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+    width: auto;
+    height: 90px;
+    display: flex;
+    margin: auto;
+    position: relative;
+    z-index: 2;
+}
+
+.material-symbols-outlined {
+    display: flex;
+    font-size: 56px;
+    margin-left: auto;
+    align-items: center;
+}
+
+.top-bar {
+    width: 100%;
+    background-color: #011245;
+    height: 66px;
+    position: relative;
+    z-index: 2;
+}
+
+
+.content {
+    margin-top: 86px;
+    text-align: center;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    position: relative;
+    z-index: 2;
+}
+
+h1 {
+    color: white;
+    text-align: center;
+    margin-top: 150px; /* Mover el texto hacia abajo 60px desde el borde superior */
+    font-family: 'M PLUS Rounded 1c';
+    font-size: 140px; 
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Horizontal offset, vertical offset, blur radius, color */
+    position: relative;
+    z-index: 2;
+  }
+  p {
+    color: white;
+    text-align: center;
+    font-family: 'M PLUS Rounded 1c';
+    font-size: 36px; 
+    margin: 1px;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Horizontal offset, vertical offset, blur radius, color */
+    position: relative;
+    z-index: 2;
+    margin-bottom: 20%; /* Separar el texto del borde inferior de la pantalla */
+  }

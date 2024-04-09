@@ -1,6 +1,10 @@
-export interface SolicitudVacaciones {
-  NombreEmpleado:string;
-    NombreAdmin:string;
-    FechaSolicitud:["FechaInicioVacaciones","FechaTerminoVacaciones"];
-    EstadoSolicitud:string;
+export interface SolicitudVacaciones{
+  NombreEmpleado: string;
+  NombreAdmin: string;
+  PeriodoSolicitado:{
+      inicio: string,
+      fin: string
+  };
+  EstadoSolicitud: string;
+  Correo: string;
 }

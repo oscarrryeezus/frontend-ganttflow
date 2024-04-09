@@ -1,0 +1,75 @@
+<app-navigation-bar-empleado></app-navigation-bar-empleado>
+
+<div class="background-color">
+    <div class="container">
+        <div class="container-bar">
+            <div class="bar">
+                <h1>Solicitud de cambio de Turno</h1>
+            </div>
+        </div>
+
+        <form class="form" #turnoForm="ngForm" (ngSubmit)="asignarVacaciones()">
+
+            <div class="form-column">
+                <label > Tipo de contrato: {{ contratoSeleccionado?.TipoContrato }} </label>
+                <h1></h1>
+                <label>Periodo:</label>
+                
+                <!-- Elimina el formulario interno -->
+                <label for="inicio">Fecha de inicio:</label>
+                <input type="date" id="inicio" name="inicio" [(ngModel)]="solicitudVacaciones.inicio" required>
+                
+                <label for="fin">Fecha de fin:</label>
+                <input type="date" id="fin" name="fin" [(ngModel)]="solicitudVacaciones.fin" required>
+            </div>
+
+            <div class="form-column">
+                <label > </label>
+            </div>
+
+            <div class="form-column">
+                <button type="submit">Pedir periodo</button>
+            </div>
+
+            <div class="form-column">
+                <label > </label>
+            </div>
+
+            <div id="alerta" class="alerta" *ngIf="periodoIncorrecto">
+                <span class="closebtn"></span> 
+                <label >El periodo seleccionado ya está en uso.</label>
+            </div>
+                  
+        </form>
+
+        <div class="container-bar" >
+            <div class="bar">
+                <h1>Datos de la solicitud</h1>
+            </div>
+        </div>
+
+        <div class="administradores-list">
+            <div class="administrador-details">
+                <div class="administrador-info">
+                    <div class="administrador-name">{{ solicitudVacaciones.NombreEmpleado }}</div>
+                    <div class="administrador-data">
+                        Periodo: {{ solicitudVacaciones.Periodo?.inicio }} - {{ solicitudVacaciones.Periodo?.fin }}
+                    </div>
+                    <div class="administrador-data">Estado de la Solicitud: {{solicitudVacaciones.EstadoSolicitud}} </div>
+                    <div class="administrador-data">Correo: {{solicitudVacaciones.Correo}} </div>
+                </div>
+            </div>
+            <div class="form-column">
+                <label > </label>
+            </div>
+            <div class="form-column">
+                <label > </label>
+            </div>
+
+            <div class="form-column">
+                <button (click)="enviarSolicitud()">Enviar solicitud</button>
+            </div>
+            
+        </div>
+    </div>
+</div>

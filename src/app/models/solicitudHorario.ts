@@ -1,9 +1,11 @@
 export interface SolicitudHorario {
-  NombreEmpleado: string;
+    NombreEmpleado: string;
     NombreAdmin: string;
     Contrato: string;
-    Turno: [];
+    TurnoSolicitado:{
+        inicio: string,
+        fin: string
+    };
     EstadoSolicitud: string;
     Correo: string;
-    Razon: string;
 }
