@@ -1,0 +1,24 @@
+{
+    "wow": {
+        "dependencies": [ "amaze" ],
+        "duration": "1 week"
+    },
+    "amaze": {
+        "duration": "3 days"
+    },
+    "cool": {
+        "duration": "6 days"
+    },
+    "whatever": {
+        "duration": "1 day",
+        "dependencies": [ "wow" ]
+    },
+    "very": {
+        "duration": "2 days",
+        "dependencies": [ "amaze" ]
+    },
+    "great": {
+        "duration": "8 days",
+        "dependencies": [ "very" ]
+    }
+}
