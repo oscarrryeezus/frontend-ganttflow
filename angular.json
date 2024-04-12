@@ -15,6 +15,11 @@
           "options": {
             "outputPath": "dist/control-horarios",
             "index": "src/index.html",
+            "allowedCommonJsDependencies": [
+              "rxjs-compat",
+              "dhtmlx-gantt",
+              "sweetalert2"
+           ],
             "browser": "src/main.ts",
             "polyfills": [
               "zone.js"
