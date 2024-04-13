@@ -21,7 +21,7 @@ import Swal from 'sweetalert2'; // Importa la librería SweetAlert2
   styleUrl: './vacaciones.component.css'
 })
 export class VacacionesComponent implements OnInit{
-  
+
   // Decorador ViewChild para obtener una referencia al elemento con el nombre 'alerta' en la plantilla HTML.
   @ViewChild('alerta') alertaElement: ElementRef | any;
 
@@ -40,7 +40,7 @@ export class VacacionesComponent implements OnInit{
   admin: Administrador | any
   correoAdmin: string = ''
   mostrarSolicitud?: boolean = true
-  solicitudCreada: Empleado | any 
+  solicitudCreada: Empleado | any
 
   // Constructor del componente, donde se inyectan los servicios necesarios
   constructor(
@@ -64,7 +64,7 @@ export class VacacionesComponent implements OnInit{
       this.contratos = contratos.filter(
         (contrato: Contrato) => contrato.TipoContrato === this.tokenDecodificado.Contrato
       );
-      
+
     });
 
     // Llamada a métodos necesarios al inicializarse el componente
@@ -80,7 +80,7 @@ export class VacacionesComponent implements OnInit{
     this.contratoService.getContrato().subscribe(
       (data) => {
         this.contratos = data;
-        
+
         this.contratos = data.filter(
           (contrato: Contrato) => contrato.TipoContrato === this.tokenDecodificado.Contrato
         );
@@ -107,7 +107,7 @@ export class VacacionesComponent implements OnInit{
     if (!this.solicitudVacaciones) {
         this.solicitudVacaciones = {};
     }
-  
+
     // Asigna las fechas de inicio y fin del formulario a los datos de periodo de la solicitud
     this.solicitudVacaciones.Periodo = {
         inicio: this.solicitudVacaciones.inicio,
@@ -115,11 +115,10 @@ export class VacacionesComponent implements OnInit{
     };
 }
 
-  
 
 
-  // Método para enviar la solicitud de horario
- enviarSolicitud() {
+
+enviarSolicitud() {
   // Verifica que se hayan ingresado las fechas de inicio y fin
   if (!this.solicitudVacaciones.inicio || !this.solicitudVacaciones.fin) {
     // Muestra un mensaje de error si alguna de las fechas está faltante
@@ -127,57 +126,71 @@ export class VacacionesComponent implements OnInit{
     return;
   }
 
-  // Crea un objeto que contenga la solicitud de vacaciones con las fechas ingresadas por el usuario
-  const solicitud = {
-    NombreEmpleado: this.tokenDecodificado.Nombre +' '+  this.tokenDecodificado.AppE + ' ' + this.tokenDecodificado.ApmE,
-    NombreAdmin: this.tokenDecodificado.NombreAdmin,
-    Contrato: this.tokenDecodificado.Contrato,
-    PeriodoSolicitado: {
-      inicio: this.solicitudVacaciones.inicio,
-      fin: this.solicitudVacaciones.fin
-    },
-    EstadoSolicitud: 'En Revisión',
-    Correo: this.tokenDecodificado.Correo
-  };
+  // Llama al servicio correspondiente para obtener las solicitudes de vacaciones del empleado
+  this.solicitudVacacionesService.obtenerSolicitudesEmpleado(this.tokenDecodificado.NombreEmpleado).subscribe((solicitudes: SolicitudVacaciones[]) => {
+    // Verifica si alguna de las solicitudes está en revisión
+    const tieneSolicitudEnRevision = solicitudes.some(solicitud => solicitud.EstadoSolicitud === 'En Revisión');
 
-  // Llama al servicio correspondiente para enviar la solicitud utilizando el objeto creado
-  this.solicitudVacacionesService.crearSolicitudVacaciones(solicitud).subscribe(() => {
-    // Muestra una confirmación al usuario
-    Swal.fire({
-      title: 'Solicitud enviada!',
-      text: 'Su solicitud de vacaciones ha sido enviada correctamente',
-      icon: 'success',
-      confirmButtonText: 'Entendido'
-    });
+    if (tieneSolicitudEnRevision) {
+      // Muestra un mensaje de error si el empleado tiene una solicitud de vacaciones en revisión
+      console.error('Ya tienes una solicitud de vacaciones en revisión');
+      return;
+    }
 
-    // Reinicia el formulario o limpia las fechas ingresadas por el usuario si es necesario
-    this.solicitudVacaciones.nicio = null;
-    this.solicitudVacaciones.fechaFin = null;
+    // Crea un objeto que contenga la solicitud de vacaciones con las fechas ingresadas por el usuario
+    const solicitud = {
+      NombreEmpleado: this.tokenDecodificado.Nombre +' '+  this.tokenDecodificado.AppE + ' ' + this.tokenDecodificado.ApmE,
+      NombreAdmin: this.tokenDecodificado.NombreAdmin,
+      Contrato: this.tokenDecodificado.Contrato,
+      PeriodoSolicitado: {
+        inicio: this.solicitudVacaciones.inicio,
+        fin: this.solicitudVacaciones.fin
+      },
+      EstadoSolicitud: 'En Revisión',
+      Correo: this.tokenDecodificado.Correo
+    };
 
-    // Puedes agregar cualquier otra lógica necesaria después de enviar la solicitud
-  }, error => {
-    // Maneja el error en caso de que ocurra
-    console.error('Error al enviar la solicitud de vacaciones:', error);
-    // Muestra un mensaje de error al usuario
-    Swal.fire({
-      title: 'Error',
-      text: 'Ocurrió un error al enviar la solicitud de vacaciones. Por favor, inténtelo de nuevo más tarde',
-      icon: 'error',
-      confirmButtonText: 'Aceptar'
+    // Llama al servicio correspondiente para enviar la solicitud utilizando el objeto creado
+    this.solicitudVacacionesService.crearSolicitudVacaciones(solicitud).subscribe(() => {
+      // Muestra una confirmación al usuario
+      Swal.fire({
+        title: 'Solicitud enviada!',
+        text: 'Su solicitud de vacaciones ha sido enviada correctamente',
+        icon: 'success',
+        confirmButtonText: 'Entendido'
+      });
+
+      // Reinicia el formulario o limpia las fechas ingresadas por el usuario si es necesario
+      this.solicitudVacaciones.nicio = null;
+      this.solicitudVacaciones.fechaFin = null;
+
+      // Puedes agregar cualquier otra lógica necesaria después de enviar la solicitud
+    }, error => {
+      // Maneja el error en caso de que ocurra
+      console.error('Error al enviar la solicitud de vacaciones:', error);
+      // Muestra un mensaje de error al usuario
+      Swal.fire({
+        title: 'Error',
+        text: 'Ocurrió un error al enviar la solicitud de vacaciones. Por favor, inténtelo de nuevo más tarde',
+        icon: 'error',
+        confirmButtonText: 'Aceptar'
+      });
     });
   });
 }
 
 
+
+
   existeSolicitud() {
     let nombre1: string = this.solicitudVacaciones.NombreEmpleado;
-  
+
     this.solicitudVacacionesService.obtenerUnSolicitudVacaciones(nombre1).subscribe(data => {
       // Esta función se ejecutará cuando se complete la solicitud HTTP
-  
+
       this.solicitudCreada = data; // Asigna los datos recibidos de la solicitud
       let nombre2: string = this.solicitudCreada.NombreEmpleado;
-  
+
       if (nombre1 === nombre2) {
         this.solicitudVacaciones = this.solicitudCreada; // Asigna los datos de la solicitud creada a this.solicitud
 
@@ -198,7 +211,7 @@ export class VacacionesComponent implements OnInit{
       }
     });
   }
-  
+
 
 
   enviarNotificacion(asunto: string, mensaje: string, correo: string): void {
@@ -207,7 +220,7 @@ export class VacacionesComponent implements OnInit{
       mensaje: mensaje,
       correo: correo
     };
-  
+
     this.correoService.envioCorreo(correoData).subscribe(
       () => {
         console.log('Correo enviado con éxito');
