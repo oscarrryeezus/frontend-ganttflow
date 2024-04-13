@@ -2,11 +2,11 @@
 body {
     font-family: 'M PLUS Rounded 1c', sans-serif;
   }
-  
+
   label{
     font-family: 'M PLUS Rounded 1c'
   }
-  
+
   .bar {
     display: flex;
     align-items: center;
@@ -19,7 +19,7 @@ body {
     font-family: 'M PLUS Rounded 1c';
     border-radius: 10px; /* Redondear todas las esquinas */
   }
-  
+
   .bar h1 {
     text-align: center;
     font-size: 36px;
@@ -28,7 +28,7 @@ body {
     color: #ffffff;
     margin: 0; /* Eliminar el margen predeterminado del h1 */
   }
-  
+
   .bar-lista {
     display: flex;
     align-items: center;
@@ -49,19 +49,19 @@ body {
     color: #ffffff;
     margin: 0; /* Eliminar el margen predeterminado del h1 */
   }
-  
+
   .container-bar {
     height: auto;
     width: auto;
     background-color: #ffffff;
   }
-  
+
   /* Agregar espacio entre el botón y la barra de búsqueda */
   .search-bar {
     margin-bottom: 20px;
     margin-top: 20px; /* Agregar margen superior */
   }
-  
+
   /* Estilos para la barra de búsqueda */
   .search-bar input[type="text"] {
     flex: 1;
@@ -70,7 +70,7 @@ body {
     border-radius: 4px;
     margin-right: 10px; /* Ajustar el margen derecho */
   }
-  
+
   .search-bar button {
     padding: 10px 20px;
     background-color: #2839bc;
@@ -80,10 +80,10 @@ body {
     cursor: pointer;
     margin-left: 10px; /* Agregar margen izquierdo */
   }
-  
+
   /* Resto de estilos permanecen iguales */
-  
-  
+
+
   /* Estilos para el contenedor principal */
   .background-color {
     background-color: #c1c0c0;
@@ -93,7 +93,7 @@ body {
     justify-content: center;
     padding: 50px 0; /* Añadir espacio alrededor del contenido */
   }
-  
+
   /* Estilos para el formulario */
   .container {
     width: 90%; /* Ancho del contenedor */
@@ -103,28 +103,29 @@ body {
     border-radius: 10px; /* Bordes redondeados */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra */
   }
-  
+
   .form {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 20px; /* Ajustar la separación entre las columnas */
   }
-  
+
   .form-column {
     grid-column: span 1;
   }
-  
+
   /* Estilos para los elementos del formulario */
   label {
     font-weight: bold;
     margin-bottom: 5px;
   }
-  
+
   input[type="text"],
   input[type="email"],
   input[type="password"],
   input[type="date"],
   input[type="time"],
+  input[type="number"],
   select {
     width: 100%;
     padding: 10px;
@@ -134,7 +135,7 @@ body {
     margin-bottom: 10px;
     color: #333;
   }
-  
+
   /* Efecto hover para los elementos de entrada y selección */
   input[type="text"]:hover,
   input[type="email"]:hover,
@@ -144,7 +145,7 @@ body {
   select:hover {
     border-color: #3498db;
   }
-  
+
   /* Estilos para los botones */
   button {
     background-color: #2839bc;
@@ -155,44 +156,17 @@ body {
     cursor: pointer;
     transition: background-color 0.3s ease;
   }
-  
+
   button:hover {
     background-color: #287bbc;
   }
 
-  /* Estilos para los botones */
-.edit {
-  background-color: #2839bc;
-  color: #fff;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  margin-right: 10px; /* Agrega espacio a la derecha del botón */
-}
-
-.delete {
-  background-color: #ffffff;
-  color: #2839bc;
-  border: 2px solid #2839bc; 
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-
-button:hover {
-  background-color: #287bbc;
-}
-  
   /* Estilos para la lista de administradores */
   .administradores-list {
     margin-top: 20px;
     font-family: 'M PLUS Rounded 1c'
   }
-  
+
   .administrador-item {
     background-color: #f9f9f9;
     border: 1px solid #ddd;
@@ -200,28 +174,28 @@ button:hover {
     padding: 20px;
     margin-bottom: 20px;
   }
-  
+
   .administrador-details {
     display: flex;
     align-items: center;
     justify-content: space-between;
   }
-  
+
   .administrador-info {
     flex-grow: 1;
     margin-right: 20px;
   }
-  
+
   .administrador-name {
     font-weight: bold;
     font-size: 18px;
     margin-bottom: 5px;
   }
-  
+
   .administrador-data {
     font-size: 16px;
   }
-  
+
   .administrador-buttons button {
     margin-left: 5px;
     padding: 10px 20px;
@@ -230,10 +204,10 @@ button:hover {
     cursor: pointer;
     font-size: 16px;
   }
-  
+
   .administrador-buttons button.edit {
     background-color: #2839bc;
-    color: #ffffff;
+    color: #fff;
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
@@ -241,17 +215,13 @@ button:hover {
     transition: background-color 0.3s ease;
     margin-right: 10px; /* Agrega espacio a la derecha del botón */
   }
-  
+
   .administrador-buttons button.delete {
     background-color: #ffffff;
     color: #2839bc;
-    border: 2px solid #2839bc; 
+    border: 2px solid #2839bc;
     padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-  }
-
-  .administrador-buttons button :hover{
-    background-color: #287bbc;
   }

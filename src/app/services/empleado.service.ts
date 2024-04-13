@@ -38,8 +38,4 @@ export class EmpleadoService {
   actulizarEmpleadoPorEmail(correo: string, empleado: any): Observable<any>{
     return this.http.put(`${this.URL}/actualizarHorario/${correo}`, empleado);
   }
-  
-  crearMultiplesEmpleados(empleadosData: any[]): Observable<any> {
-    return this.http.post(`${this.URL}/cargamasiva`, empleadosData);
-  }
 }
