@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 export class TurnoService{
-    private URL = 'http://localhost:3000/api'
+    private URL = 'backend-ganttflow.up.railway.app/api'
 
     constructor(private http: HttpClient) {}
 

@@ -8,7 +8,7 @@ import { catchError } from 'rxjs/operators';
 })
 export class CorreoService {
 
-  private URL = 'http://localhost:3000/api/envio'; // URL del servicio de envío de correo
+  private URL = 'backend-ganttflow.up.railway.app/api/envio'; // URL del servicio de envío de correo
 
   constructor(private http: HttpClient) { }
 

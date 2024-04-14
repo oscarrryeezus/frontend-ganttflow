@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 
 
 export class HistorialHorarioService{
-    private URL = 'http://localhost:3000/api'
+    private URL = 'backend-ganttflow.up.railway.app/api'
 
     constructor(private http: HttpClient) {}
 

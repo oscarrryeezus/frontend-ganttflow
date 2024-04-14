@@ -10,7 +10,7 @@ export class SolicitudhorarioService {
 
   constructor(private http: HttpClient) { }
 
-  private URL = 'http://localhost:3000/api/horario'
+  private URL = 'backend-ganttflow.up.railway.app/api/horario'
 
   getSolicitudHorario(): Observable<any>{
     return this.http.get(this.URL)

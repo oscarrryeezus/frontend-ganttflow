@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class ContratoService{
 
-    private URL = 'http://localhost:3000/api/contrato'
+    private URL = 'backend-ganttflow.up.railway.app/api/contrato'
 
     constructor(private http: HttpClient) {}
 

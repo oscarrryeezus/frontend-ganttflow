@@ -6,7 +6,7 @@ import { firstValueFrom } from 'rxjs';
 
 @Injectable()
 export class LinkService {
-    private linkUrl = 'http://localhost:3000/api/link';
+    private linkUrl = 'backend-ganttflow.up.railway.app/api/link';
 
 
     constructor(private http: HttpClient) {}

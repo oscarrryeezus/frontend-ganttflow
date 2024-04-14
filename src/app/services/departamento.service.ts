@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class DepartamentoService {
 
-    private URL = 'http://localhost:3000/api/departamento';
+    private URL = 'backend-ganttflow.up.railway.app/api/departamento';
 
     constructor(private http: HttpClient) {}
 

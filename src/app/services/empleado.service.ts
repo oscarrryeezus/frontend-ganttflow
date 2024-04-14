@@ -7,7 +7,7 @@ import { Observable } from "rxjs";
 })
 export class EmpleadoService {
 
-  private URL = 'http://localhost:3000/api/empleado'; // Updated URL
+  private URL = 'backend-ganttflow.up.railway.app/api/empleado'; // Updated URL
 
   constructor(private http: HttpClient) {}
 
@@ -38,4 +38,9 @@ export class EmpleadoService {
   actulizarEmpleadoPorEmail(correo: string, empleado: any): Observable<any>{
     return this.http.put(`${this.URL}/actualizarHorario/${correo}`, empleado);
   }
+
+  crearMultiplesEmpleados(datosEmpleados: any[]): Observable<any> {
+    return this.http.post(`${this.URL}/multiples`, datosEmpleados);
+  }
+
 }

@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class AdministradorService{
 
-    private URL = 'http://localhost:3000/api/administrador'
+    private URL = 'backend-ganttflow.up.railway.app/api/administrador'
 
     constructor(private http: HttpClient) {}
 
