@@ -7,7 +7,7 @@ import { Observable, map } from 'rxjs';
 })
 export class AuthService {
   
-  private URL = 'http://localhost:3000/api/auth'
+  private URL = 'https://backend-ganttflow.up.railway.app//api/auth'
 
 
   constructor(private http: HttpClient){}

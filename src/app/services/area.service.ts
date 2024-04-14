@@ -7,7 +7,7 @@ import { Observable } from "rxjs";
 })
 export class AreaService {
   
-  private URL = 'backend-ganttflow.up.railway.app/api/area'
+  private URL = 'https://backend-ganttflow.up.railway.app/api/area'
 
   constructor (private http: HttpClient) {}
 

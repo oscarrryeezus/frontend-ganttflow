@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class CargaMasivaService {
 
-  private URL = 'http://localhost:3000/api/empleado';
+  private URL = 'https://backend-ganttflow.up.railway.app/api/empleado';
 
   constructor(
     private http: HttpClient
