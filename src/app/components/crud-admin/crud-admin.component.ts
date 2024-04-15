@@ -14,7 +14,7 @@ import { SedeService } from '../../services/sede.service';
 })
 export class CrudAdminComponent implements OnInit {
   administradores: Administrador[] = [];
-  administrador: Administrador | any = {};
+  administrador: Administrador | any = {root:false};
   modoEdicion: boolean = false;
   nombreBusqueda: string = '';
   sedes: any[] = [];
@@ -101,9 +101,6 @@ export class CrudAdminComponent implements OnInit {
       });
     }
   }
-
-
-
 
 
   editarAdministrador(admin: Administrador) {

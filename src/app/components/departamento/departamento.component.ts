@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { DepartamentoService } from '../../services/departamento.service';
 import { Departamento } from '../../models/departamento';
 import { FormBuilder } from '@angular/forms';
+import { CookieService } from 'ngx-cookie-service';
+import { Router } from '@angular/router';
+import * as jwtDecode from 'jwt-decode';
 
 @Component({
   selector: 'app-departamento',
@@ -19,11 +22,49 @@ export class DepartamentoComponent implements OnInit {
     Cp: ['']
   });
   nombreBusqueda: any;
+  token?: string;
+  cookie?: boolean;
+  tokenDecodificado: any;
+  navBarAdmin: boolean = false;
+  navBarEmpleado: boolean = false;
+  navBarSuper: boolean = false;
+  navbarLogin: boolean = true;
 
-  constructor(private departamentoService: DepartamentoService, private fb: FormBuilder) {}
+  constructor(private departamentoService: DepartamentoService, private fb: FormBuilder,
+    private cookieService: CookieService,
+    private router: Router) {}
 
   ngOnInit(): void {
+    this.token = this.cookieService.get('token');
+    this.cookie = this.cookieService.check('token');
+
+    if (!this.cookie || !this.token) {
+      this.router.navigate(['login']);
+      this.navbarLogin = true;
+      return;
+    }
+
+    this.tokenDecodificado = jwtDecode.jwtDecode(this.token);
+
+    this.determinarBarraDeNavegacion();
+
+
     this.cargarDepartamentos();
+  }
+
+  determinarBarraDeNavegacion(): void {
+    switch (this.tokenDecodificado.Role) {
+      case 'Superadministrador':
+        this.navBarSuper = true;
+        break;
+      case 'Administrador':
+        this.navBarAdmin = true;
+        break;
+      case 'Empleado':
+        this.navBarEmpleado = true;
+        break;
+    }
+    this.navbarLogin = false;
   }
   
   buscarDepartamentos(): void {

@@ -11,6 +11,7 @@ import { SedesComponent } from './components/sede/sede.component';
 import { SolicitudCambioHorarioComponent } from './components/solicitudes/solicitud-cambio-horario/solicitud-cambio-horario.component';
 import { LoginComponent } from './components/login/login.component';
 import { VacacionesComponent } from './components/solicitudes/vacaciones/vacaciones.component';
+import { ActividadesComponent } from './components/actividades/actividades.component';
 
 
 //guardiaaas
@@ -43,13 +44,17 @@ const routes: Routes = [
   { path: 'solicitudes-turno', component: TurnoComponent, canActivate: [AdministradorGuardia]},
   { path: 'solicitud-vacaciones-validacion', component: SolicitudVacacionComponent, canActivate: [AdministradorGuardia] },
   { path: 'departamento', component:DepartamentoComponent, canActivate: [AdministradorGuardia]},
-  { path: 'gantt', component: GanttAdminComponent, canActivate:  [SuperAdministradorGuardia,AdministradorGuardia]},
+  { path: 'gantt', component: GanttAdminComponent, canActivate:  [AdministradorGuardia]},
+  { path: 'sede', component: SedesComponent, canActivate:  [AdministradorGuardia]},
+  { path: 'actividades', component: ActividadesComponent, canActivate:  [AdministradorGuardia]},
+
 
 
   // Superadministrador
   { path: 'admin', component: CrudAdminComponent, canActivate: [SuperAdministradorGuardia,AdministradorGuardia]},
   { path: 'solicitudsupad', component: SolicitudSupAdminComponent, canActivate: [SuperAdministradorGuardia,AdministradorGuardia]},
   { path: 'sede', component: SedesComponent, canActivate:  [SuperAdministradorGuardia,AdministradorGuardia]},
+  { path: 'gantt', component: GanttAdminComponent, canActivate:  [SuperAdministradorGuardia]},
 
 ];
 @NgModule({

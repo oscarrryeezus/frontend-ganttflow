@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
+import { Router } from '@angular/router';
 //solicitud
 import { SolicitudVacaciones } from '../../models/solicitudVacaciones';
 import { VacacionesService } from '../../services/vacaciones.service';
-import { Administrador } from '../../models/administrador';
 import * as jwtDecode from 'jwt-decode';
 import { CorreoService } from '../../services/correo.service';
-import { Contrato } from '../../models/contrato';
 
 //empleado
 import { Empleado } from '../../models/empleado';
@@ -26,6 +25,14 @@ export class SolicitudVacacionComponent implements OnInit{
   cookie: boolean | undefined;
   tokenDecodificado: any;
 
+  tokenn?: string;
+  cookiee?: boolean;
+  tokenDecodificadoo: any;
+  navBarAdmin: boolean = false;
+  navBarEmpleado: boolean = false;
+  navBarSuper: boolean = false;
+  navbarLogin: boolean = true;
+
 
   solicitudesPendientes: SolicitudVacaciones[] = [];
   solicitudesRevisadas: SolicitudVacaciones[] = [];
@@ -41,15 +48,45 @@ export class SolicitudVacacionComponent implements OnInit{
     private correoService: CorreoService,
     private empleadoService: EmpleadoService,
     private taskService: TaskService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
+    this.tokenn = this.cookieService.get('token');
+    this.cookiee = this.cookieService.check('token');
+
+    if (!this.cookiee || !this.tokenn) {
+      this.router.navigate(['login']);
+      this.navbarLogin = true;
+      return;
+    }
+
+    this.tokenDecodificadoo = jwtDecode.jwtDecode(this.tokenn);
+
+    this.determinarBarraDeNavegacion();
+
     this.token = this.cookieService.get('token');
     this.cookie = this.cookieService.check('token');
     this.tokenDecodificado = jwtDecode.jwtDecode(this.token);
 
     this.obtenerSolicitudes();
   }
+
+  determinarBarraDeNavegacion(): void {
+    switch (this.tokenDecodificadoo.Role) {
+      case 'Superadministrador':
+        this.navBarSuper = true;
+        break;
+      case 'Administrador':
+        this.navBarAdmin = true;
+        break;
+      case 'Empleado':
+        this.navBarEmpleado = true;
+        break;
+    }
+    this.navbarLogin = false;
+  }
+
 
   obtenerSolicitudes(): void {
     this.solicitudVacacionesService.obtenerSolicitudesAdmin(this.tokenDecodificado.NombreAdmin).subscribe((data: SolicitudVacaciones[] | any) => {

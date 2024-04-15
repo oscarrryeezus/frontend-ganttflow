@@ -57,6 +57,7 @@ import {
   ɵɵstyleProp,
   ɵɵviewQuery
 } from "./chunk-OS7IPPSB.js";
+import "./chunk-SAVXX6OM.js";
 import {
   animationFrameScheduler,
   asapScheduler,
@@ -64,7 +65,6 @@ import {
   isObservable,
   merge
 } from "./chunk-SG3BCSKH.js";
-import "./chunk-SAVXX6OM.js";
 import {
   BehaviorSubject,
   ConnectableObservable,

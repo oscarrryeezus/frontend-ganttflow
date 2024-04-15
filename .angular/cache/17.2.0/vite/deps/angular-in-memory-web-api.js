@@ -19,8 +19,8 @@ import {
   ɵɵdefineNgModule,
   ɵɵinject
 } from "./chunk-OS7IPPSB.js";
-import "./chunk-SG3BCSKH.js";
 import "./chunk-SAVXX6OM.js";
+import "./chunk-SG3BCSKH.js";
 import {
   BehaviorSubject,
   Observable,

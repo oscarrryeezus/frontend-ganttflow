@@ -27,7 +27,7 @@ import { NavigationBarSuperadminComponent } from './components/nabvars/navigatio
 import { SolicitudSupAdminComponent } from './components/solicitud-sup-admin/solicitud-sup-admin.component';
 import { TurnoComponent } from './components/turno/turno.component';
 import { InicioComponent } from './components/inicios/inicio/inicio.component';
-import { CommonModule } from '@angular/common'; // Asegúrate de importar CommonModule
+import { CommonModule } from '@angular/common'; 
 import { Gantt } from 'dhtmlx-gantt';
 import { GanttComponent } from './components/gantt/gantt.component';
 import { GanttEmpleadoComponent } from './components/gantts/gantt-empleado/gantt-empleado.component';
@@ -36,6 +36,8 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './services/in-memory-data.service';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { SolicitudVacacionComponent } from './components/solicitud-vacacion/solicitud-vacacion.component';
+import { TaskService } from './services/task.service';
+import { ActividadesComponent } from './components/actividades/actividades.component';
 
 @NgModule({
   declarations: [
@@ -63,7 +65,8 @@ import { SolicitudVacacionComponent } from './components/solicitud-vacacion/soli
     GanttComponent,
     GanttEmpleadoComponent,
     GanttAdminComponent,
-    SolicitudVacacionComponent
+    SolicitudVacacionComponent,
+    ActividadesComponent
   ],
   bootstrap: [AppComponent],
   imports: [
@@ -86,6 +89,7 @@ import { SolicitudVacacionComponent } from './components/solicitud-vacacion/soli
     RegisterEmployeComponent,
     LoginComponent,
     CookieService,
+    TaskService
   ],
 })
 export class AppModule { }
