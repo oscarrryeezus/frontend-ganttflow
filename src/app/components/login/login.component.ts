@@ -28,7 +28,6 @@ export class LoginComponent {
     this.authService.logIn(credentials).subscribe(
       (response) => { 
         this.cookieService.set('token',response.token)
-        console.log(response)
         this.router.navigate(['inicio'])
       },
       (error) => {

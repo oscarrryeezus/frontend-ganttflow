@@ -16,4 +16,7 @@ export class NavigationBarLoginComponent {
       this.scrolled = false;
     }
   }
+
+  
+
 }

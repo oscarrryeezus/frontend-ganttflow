@@ -1,14 +1,14 @@
 <div class="esp" [ngClass]="{'scroll-hide': scrolled}">
   <div class="top-logo">
     <a href="inicio"><img src="assets/logo.jpeg" alt="Logo de la empresa" width="auto" height="70px" style="position: fixed;"></a>
-      <div class="menu-ver">
-        <a class="acc"> <span class="material-symbols-outlined" style=" font-size: 40px;">
-          account_circle
-          </span></a>
-          <div class="menu-ver-acc">
-              <a href="login" (click)="salir()">Salir</a>
-          </div>
-      </div>
+    <div class="menu-ver">
+      <a class="acc" (click)="toggleMenu()"> <span class="material-symbols-outlined" style=" font-size: 40px; cursor: pointer;">
+        account_circle
+        </span></a>
+        <div class="menu-ver-acc"  [ngClass]="{'mostrar-menu': mostrarMenu}">
+            <a href="login" (click)="salir()">Salir</a>
+        </div>
+    </div>
     </div>
   </div>
   

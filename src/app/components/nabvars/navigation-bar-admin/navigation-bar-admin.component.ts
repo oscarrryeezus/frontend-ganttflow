@@ -31,8 +31,13 @@ export class NavigationBarAdminComponent {
   dropdownVisibles: boolean = false;
   dropdownVisibless: boolean = false;
   dropdownVisibleaa: boolean = false;
+  mostrarMenu: boolean=false;
 
   @ViewChild('dropdownMenu') dropdownMenu: ElementRef | undefined;
+
+  toggleMenu(): void {
+    this.mostrarMenu = !this.mostrarMenu;
+  }
 
   toggleDropdown() {
     this.dropdownVisible = !this.dropdownVisible;

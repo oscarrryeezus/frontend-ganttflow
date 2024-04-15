@@ -135,7 +135,7 @@ a{
   color: #ffffff;
 }
 
-.menu-ver:hover .menu-ver-acc {
+.menu-ver-acc.mostrar-menu {
   display: block;
 }
 

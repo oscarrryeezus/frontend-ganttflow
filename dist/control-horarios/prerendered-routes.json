@@ -1,0 +1,20 @@
+{
+  "routes": [
+    "/",
+    "/actividades",
+    "/admin",
+    "/area",
+    "/contrato",
+    "/departamento",
+    "/gantt",
+    "/gantt-flow",
+    "/login",
+    "/rg_emp",
+    "/sede",
+    "/solicitud-cambio-horario",
+    "/solicitud-vacaciones",
+    "/solicitud-vacaciones-validacion",
+    "/solicitudes-turno",
+    "/solicitudsupad"
+  ]
+}

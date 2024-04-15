@@ -1,10 +1,16 @@
 {
   "hosting": {
-    "public": "dist/control-horarios/browser",
+    "public": "dist/control-horarios",
     "ignore": [
       "firebase.json",
       "**/.*",
       "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
     ]
   }
 }
