@@ -1,0 +1,262 @@
+.material-symbols-outlined{
+  display: flex;
+  margin-left: auto;
+  }
+
+  .esp {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0; 
+    width: 100%; 
+    z-index: 3;
+  }
+a{
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+}
+
+.scroll-hide {
+  display: none;
+}
+
+.fixed-top {
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 999;
+  border-radius: 10px;
+}
+
+  .acc{
+    text-decoration: none;
+    right: 1.6%;
+    height: 12.5%;
+    position: fixed;
+    display: flex;
+    align-items: center;
+    color: #000000;
+  }
+
+.app {
+    font-weight: 800;
+    font-size: 125%;
+    padding-top: 70px;
+    
+}
+
+  .top-logo {
+    background-color: #ffffff;
+    width: auto;
+    height: 70px;
+    margin: auto;  
+  }
+
+  .top-bar {
+    background-color: #011245;
+    color: white;
+    left: 0;
+    right: 0;
+    width: auto;
+    margin: auto;
+    justify-content: space-between;
+    z-index: 2;
+  }
+
+  .menu {
+    justify-content: center;
+    list-style: none;
+    display: flex;
+    height: 3.5em;
+}
+
+.menu li:hover .menu-ver{
+  display: block;
+}
+
+.boton-agregar2,
+.boton-soli2,
+.boton-gan2,
+.boton2,
+.boton-agregar,
+.boton-soli,
+.boton-gan,
+.boton {
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    padding: 0.7em 2em;
+    background-color: #011245;
+    color: white;
+    text-decoration: none;
+    border-bottom: none;
+    cursor: pointer;
+}
+
+.boton-agregar2,
+.boton-soli2,
+.boton-gan2,
+.boton2 {
+  display: none;
+}
+
+.boton-agregar2:hover,
+.boton-soli2:hover,
+.boton-gan2:hover,
+.boton2:hover,
+.boton-agregar:hover,
+.boton-soli:hover,
+.boton-gan:hover,
+.boton:hover {
+    background-color: #003366;
+}
+
+/*Menu desplegable Usuario*/
+
+.menu-ver-acc {
+  border-radius: 10%;
+  top: 80%;
+  right: 0%;
+  display: none;
+  position: absolute;
+  background-color: #c9c9c9;
+  overflow: hidden;
+}
+
+/* Estilos para las opciones del menú desplegable */
+.menu-ver-acc a {
+  color: #000000;
+  padding: 10px 30px;
+  text-decoration: none;
+  display: block;
+}
+
+.menu-ver-acc a:hover {
+  background-color: #2839bc;
+  color: #ffffff;
+}
+
+.menu-ver-acc.mostrar-menu {
+  display: block;
+}
+
+
+/* Estilos para el contenido del menú desplegable */
+.dropdown-content {
+display: none;
+position: absolute;
+background-color: #dfdcdc;
+z-index: 1;
+}
+
+/* Estilos para las opciones del menú desplegable */
+.dropdown-content a {
+color: #000000;
+padding: 3px 22.5px;
+text-decoration: none;
+display: block;
+transition: background-color 0.2s ease;
+}
+
+
+.dropdown-content a:hover,
+.dropdown-content2 a:hover {
+background-color: #2839bc;
+color: #ffffff;
+}
+
+/* Estilos para el contenido del menú desplegable */
+.dropdown-content2 {
+  display: none;
+  position: absolute;
+  width: 100%;
+  background-color: #dfdcdc;
+  z-index: 1;
+  }
+  
+  /* Estilos para las opciones del menú desplegable */
+  .dropdown-content2 a {
+  color: #000000;
+  padding: 1% 40%;
+  text-decoration: none;
+  justify-content: center;
+  display: flex;
+  transition: background-color 0.2s ease;
+  }
+
+
+.dropdown-content {
+display: block;
+}
+
+.dropdown-content2 {
+  display: block;
+}
+
+/* Estilo para ocultar el menú desplegable */
+.dropdown-menu {
+  display: none;
+}
+
+/* Estilo para mostrar el menú desplegable cuando está activo */
+.dropdown-menu.show {
+  display: block;
+}
+
+
+
+
+@media screen and (max-width: 700px) {
+  /* Ocultar el botón "Administración" cuando el ancho de la pantalla es igual o menor a 900px */
+  .boton-gan {
+    display: none; /* Oculta el botón "Administración" */
+  }
+}
+
+@media screen and (max-width: 600px) {
+  /* Ocultar el botón "Solicitud" cuando el ancho de la pantalla es igual o menor a 1200px */
+  .boton-soli {
+    display: none; /* Oculta el botón "Calendario" */
+  }
+}
+
+@media screen and (max-width: 500px) {
+  /* Ocultar el botón "Agregar" cuando el ancho de la pantalla es igual o menor a 1200px */
+  .boton-agregar {
+    display: none; /* Oculta el botón "Calendario" */
+  }
+}
+
+@media screen and (max-width: 750px) {
+  /* Muestra el botón "boton-gan2" cuando el ancho de la pantalla es menor o igual que 900px */
+  .boton-gan2 {
+    display: flex;
+  }
+}
+@media screen and (max-width: 600px) {
+  /* Muestra el botón "boton-gan2" cuando el ancho de la pantalla es menor o igual que 900px */
+  .boton-soli2 {
+    display: flex;
+  }
+}
+@media screen and (max-width: 500px) {
+  /* Muestra el botón "boton-gan2" cuando el ancho de la pantalla es menor o igual que 900px */
+  .boton-agregar2 {
+    display: flex;
+  }
+}
+
+
+
+/* Estilo para ocultar el botón en pantallas grandes */
+@media screen and (min-width: 701px) {
+  .dropdown-button {
+    display: none;
+  }
+}
+
+/* Estilo para mostrar el botón en pantallas pequeñas */
+@media screen and (max-width: 700px) {
+  .dropdown-button {
+    display: block;
+  }
+}

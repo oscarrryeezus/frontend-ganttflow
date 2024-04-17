@@ -1,0 +1,92 @@
+<app-navigation-bar-login *ngIf="navbarLogin" class="barra"></app-navigation-bar-login>
+<app-navigation-bar-admin *ngIf="navBarAdmin" class="barra"></app-navigation-bar-admin>
+<app-navigation-bar-empleado *ngIf="navBarEmpleado" class="barra"></app-navigation-bar-empleado>
+<app-navigation-bar-superadmin *ngIf="navBarSuper" class="barra"></app-navigation-bar-superadmin>
+
+<div class="background-color">
+  <div class="container">
+
+    <!---->
+    <div class="container-bar">
+      <div class="bar">
+        <h1>Registro administrador</h1>
+      </div>
+    </div>
+
+    <!-- Formulario para crear o actualizar un administrador -->
+    <form class="form" #adminForm="ngForm" (ngSubmit)="guardarAdministrador()">
+      <input type="hidden" name="id" [(ngModel)]="administrador.id">
+
+      <div class="form-column">
+        <label>Nombre:</label>
+        <input type="text" name="NombreAdmin" [(ngModel)]="administrador.NombreAdmin" required>
+      </div>
+
+      <div class="form-column">
+        <label>Correo:</label>
+        <input type="text" name="CorreoAdmin" [(ngModel)]="administrador.CorreoAdmin" required>
+      </div>
+
+      <div class="form-column">
+        <label>Contraseña:</label>
+        <input type="password" name="Contrasena" [(ngModel)]="administrador.Contrasena" required>
+      </div>
+
+      <div class="form-column">
+        <label>Sede:</label>
+        <select name="Sede" [(ngModel)]="administrador.Region" class="text-6" required>
+          <option *ngFor="let sede of sedes" [value]="sede.region">{{ sede.region }}</option>
+        </select>
+      </div>
+
+      <div class="form-column">
+        <label>
+          Root:
+          <input type="checkbox" name="root" [(ngModel)]="administrador.root" />
+        </label>
+      </div>
+
+      <div class="form-column">
+        <button type="button" class="text-1-1" (click)="cancelarEdicion()" *ngIf="modoEdicion">Cancelar</button>
+      </div>
+
+      <div class="form-column">
+        <button type="submit" [disabled]="adminForm.invalid"> {{ modoEdicion ? 'Actualizar' : 'Crear' }} Administrador</button>
+      </div>
+
+
+
+    </form>
+
+
+
+    <div class="container-bar">
+      <div class="bar-lista">
+        <h1>Administradores Registrados</h1>
+      </div>
+    </div>
+
+    <div class="search-bar">
+      <input type="text" placeholder="Buscar administrador por nombre" [(ngModel)]="nombreBusqueda">
+      <button type="submit" (click)="buscarAdministrador()" >Buscar Administrador</button>
+    </div>
+
+    <div class="administradores-list">
+      <ul class="administrador-item" *ngFor="let admin of administradores">
+        <div class="administrador-details">
+          <div class="administrador-info">
+            <div class="administrador-name">{{ admin.NombreAdmin }}</div>
+            <div class="administrador-data">Correo: {{ admin.CorreoAdmin }}</div>
+            <div class="administrador-data">Contraseña: {{ admin.Contrasena }}</div>
+            <div class="administrador-data">Región: {{ admin.Region }}</div>
+            <div class="administrador-data">Root: {{ admin.root }}</div>
+          </div>
+          <div class="administrador-buttons">
+            <button class="edit" (click)="editarAdministrador(admin)">Editar</button>
+            <button class="delete" (click)="eliminarAdministrador(admin.NombreAdmin)" (click)="enviarNotificacion('Administrador eliminado', 'Su cuenta de administrador ha sido eliminada de Gantt Flow.', admin.CorreoAdmin)">Eliminar</button>
+          </div>
+        </div>
+      </ul>
+
+  </div>
+</div>

@@ -1,0 +1,44 @@
+<div class="esp" [ngClass]="{'scroll-hide': scrolled}">
+  <div class="top-logo">
+    <a href="inicio"><img src="assets/logo.jpeg" alt="Logo de la empresa" width="auto" height="70px" style="position: fixed;"></a>
+      <div class="menu-ver">
+        <a class="acc"> <span class="material-symbols-outlined" style=" font-size: 40px;">
+          account_circle
+          </span></a>
+          <div class="menu-ver-acc">
+              <a href="">Datos</a>
+              <a href="">Configuracion</a>
+              <a href="login" (click)="salir()">Salir</a>
+          </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="app" [ngClass]="{'fixed-top': scrolled}">
+    <div class="top-bar">
+        <div class="menu">
+            <a href="/inicio" class="boton-left">Inicio</a>
+            <div class="dropdown">
+              <a class="boton" style="height: 39px;  cursor: pointer;">Agregar</a>
+              <div class="dropdown-content">
+                <a href="/admin">Administrador</a>
+                <a href="/rg_emp">Empleado</a>
+                <a href="/contrato">Contratos</a>
+                <a href="/area">Area</a>
+                <a href="/sede">Ciudad</a>
+                <a href="#">Actividades</a>
+              </div>
+            </div>
+            <div class="dropdown">
+              <a class="boton" style="height: 39px;  cursor: pointer;">Solicitud</a>
+              <div class="dropdown-content">
+                <a style="padding: 3px 41px;" href="/solicitudes-turno">Turno</a>
+                <a style="padding: 3px 41px;" href="/solicitud-vacaciones-validacion">Vacaciones</a>
+              </div>
+            </div>
+            <a href="#" class="boton-right">Gantt</a>
+        </div>
+    </div>
+  </div>
+  
+  

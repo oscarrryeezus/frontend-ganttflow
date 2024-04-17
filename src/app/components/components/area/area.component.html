@@ -1,0 +1,57 @@
+
+<app-navigation-bar-login *ngIf="navbarLogin" class="barra"></app-navigation-bar-login>
+<app-navigation-bar-admin *ngIf="navBarAdmin" class="barra"></app-navigation-bar-admin>
+<app-navigation-bar-empleado *ngIf="navBarEmpleado" class="barra"></app-navigation-bar-empleado>
+<app-navigation-bar-superadmin *ngIf="navBarSuper" class="barra"></app-navigation-bar-superadmin>
+
+<div class="background-color">
+  <div class="container">
+    <!---->
+    <div class="container-bar">
+      <div class="bar">
+        <h1>Registro Área</h1>
+      </div>
+    </div>
+
+    <form class="form" #areaForm="ngForm" (ngSubmit)="guardarArea()">
+      <div class="form-column">
+        <label>Nombre:</label>
+        <input type="text" name="NombreArea" [(ngModel)]="area.NombreArea" required>
+      </div>
+
+      <div class="form-column">
+        <label>Descripción:</label>
+        <input type="text" name="Descripcion" [(ngModel)]="area.Descripcion" required>
+      </div>
+
+      <div class="form-column">
+        <button type="submit"> {{ modoEdicion ? 'Actualizar':'Crear' }} Area</button>
+      </div>
+      <div class="form-column">
+        <button type="button" class="text-1-1" (click)="cancelarEdicion()" *ngIf="modoEdicion">Cancelar</button>
+      </div>
+    </form>
+
+    <div class="container-bar">
+      <div class="bar">
+        <h1> Áreas Registradas </h1>
+      </div>
+    </div>
+
+    <div class="administradores-list">
+      <ul class="administrador-item" *ngFor="let areasss of areas">
+        <div class="administrador-details">
+          <div class="administrador-info">
+            <div class="administrador-name"> {{ areasss.NombreArea }}</div>
+            <div class="administrador-data">{{ areasss.Descripcion }}</div>
+          </div>
+          <td>
+            <button class="edit" (click)="editarArea(areasss)">Editar</button>
+            <button class="delete" (click)="eliminarArea(areasss.NombreArea)">Eliminar</button>            
+          </td>
+        </div>
+      </ul>
+    </div>
+  </div>
+</div>
+

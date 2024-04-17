@@ -1,0 +1,86 @@
+<app-navigation-bar-empleado></app-navigation-bar-empleado>
+
+<div class="background-color">
+    <div class="container">
+        <div class="container-bar">
+            <div class="bar">
+                <h1>Solicitud de cambio de Turno</h1>
+            </div>
+        </div>
+
+        <form class="form" #turnoForm="ngForm" (ngSubmit)="asignarHorario()">
+
+            <div class="form-column">
+                <label > Tipo de contrato: {{ contratoSeleccionado?.TipoContrato }} </label>
+                <h1></h1>
+                <label>Turno: {{ tokenDecodificado.TurnoActual.inicio }} - {{ tokenDecodificado.TurnoActual.fin }}</label>
+            </div>
+
+              <div class="form-column">
+                <label>Turno:</label>
+                <select name="Turno" [(ngModel)]="turnoSeleccionado">
+                  <option *ngFor="let turno of contratoSeleccionado?.TurnosContrato" [ngValue]="turno">{{ turno.inicio }} - {{ turno.fin }}</option>
+                </select>
+              </div>
+
+                <div class="form-column">
+                    <label > </label>
+                    
+                </div>
+
+                <div class="form-column">
+                    <button type="submit">Elegir horario</button>
+                </div>
+
+                <div class="form-column">
+                    <label > </label>
+                    
+                </div>
+
+                <div id="alerta" class="alerta" *ngIf="horarioIncorrecto">
+                    <span class="closebtn"></span> 
+                    <label >El horario seleccionado ya está en uso.</label>
+                </div>
+                  
+
+        </form>
+
+        <div class="container-bar" >
+            <div class="bar">
+                <h1>Datos de la solicitud</h1>
+            </div>
+        </div>
+
+        <div class="administradores-list">
+            <div class="administrador-details">
+                <div class="administrador-info">
+                    <div class="administrador-name">{{ solicitud.NombreEmpleado }}</div>
+                    <div class="administrador-data">Contrato: {{solicitud.Contrato}} </div>
+                    <div class="administrador-data" *ngIf="mostrarSolicitud">
+                        Turno: {{solicitud.Turno?.inicio}} - {{ solicitud.Turno?.fin }}
+                    </div>
+
+                    <div class="administrador-data" *ngIf="!mostrarSolicitud">
+                        Turno: {{ this.solicitudCreada.TurnoSolicitado.inicio }} - {{ this.solicitudCreada.TurnoSolicitado.fin }}
+                    </div>
+                    <div class="administrador-data">Estado de la Solicitud: {{solicitud.EstadoSolicitud}} </div>
+                    <div class="administrador-data">Correo: {{solicitud.Correo}} </div>
+                </div>
+            </div>
+            <div class="form-column">
+                <label > </label>
+                
+            </div>
+            <div class="form-column">
+                <label > </label>
+                
+            </div>
+
+            <div class="form-column">
+                <button (click)="enviarSolicitud()" *ngIf="mostrarSolicitud">Enviar solicitud</button>
+                <button (click)="borrarSolicitud()" *ngIf="!mostrarSolicitud">Aceptar</button>
+            </div>
+            
+        </div>
+    </div>
+</div>

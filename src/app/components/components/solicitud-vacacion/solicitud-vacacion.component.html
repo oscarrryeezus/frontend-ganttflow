@@ -1,0 +1,46 @@
+<app-navigation-bar-login *ngIf="navbarLogin" class="barra"></app-navigation-bar-login>
+<app-navigation-bar-admin *ngIf="navBarAdmin" class="barra"></app-navigation-bar-admin>
+<app-navigation-bar-empleado *ngIf="navBarEmpleado" class="barra"></app-navigation-bar-empleado>
+<app-navigation-bar-superadmin *ngIf="navBarSuper" class="barra"></app-navigation-bar-superadmin>
+
+<div class="background-color">
+    <div class="container">
+        <div class="container-bar">
+            <div class="bar">
+                <h1>Solicitudes Pendedientes</h1>
+            </div>
+        </div>
+        <div class="administradores-list" >
+            <ul class="administrador-item" *ngFor="let solicitud of solicitudesPendientes">
+                <div class="administrador-details">
+                    <div class="administrador-info">
+                        <div class="administrador-name"> {{ solicitud.NombreEmpleado }}</div>
+                        <div class="administrador-data">Periodo: {{ solicitud.PeriodoSolicitado.inicio }} - {{ solicitud.PeriodoSolicitado.fin }} </div>
+                        <div class="administrador-data">Estado: {{ solicitud.EstadoSolicitud }}</div>
+                        <div class="administrador-data">Correo: {{ solicitud.Correo }}</div>
+                    </div>
+                    <div class="administrador-buttons">
+                        <button class="edit" (click)="aceptarSolicitud(solicitud)">Aceptar</button>
+                        <button class="delete" (click)="rechazarSolicitud(solicitud.NombreEmpleado)">Rechazar</button>
+                    </div>
+                </div>
+            </ul>
+        </div>
+        <div class="bar">
+            <h1>Solicitudes Revisadas</h1>
+        </div>
+        <div class="administradores-list" >
+            <ul class="administrador-item" *ngFor="let solicitud of solicitudesRevisadas">
+                <div class="administrador-details">
+                    <div class="administrador-info">
+                        <div class="administrador-name"> {{ solicitud.NombreEmpleado }}</div>
+                        <div class="administrador-data">Periodo: {{ solicitud.PeriodoSolicitado.inicio }} - {{ solicitud.PeriodoSolicitado.fin }} </div>
+                        <div class="administrador-data">Estado: {{ solicitud.EstadoSolicitud }}</div>
+                        <div class="administrador-data">Correo: {{ solicitud.Correo }}</div>
+                    </div>
+                </div>
+            </ul>
+        </div>
+    </div>
+    
+</div>

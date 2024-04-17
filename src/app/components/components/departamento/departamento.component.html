@@ -1,0 +1,64 @@
+<app-navigation-bar-login *ngIf="navbarLogin" class="barra"></app-navigation-bar-login>
+<app-navigation-bar-admin *ngIf="navBarAdmin" class="barra"></app-navigation-bar-admin>
+<app-navigation-bar-empleado *ngIf="navBarEmpleado" class="barra"></app-navigation-bar-empleado>
+<app-navigation-bar-superadmin *ngIf="navBarSuper" class="barra"></app-navigation-bar-superadmin>
+
+<div class="background-color">
+  <div class="container">
+    <div class="container-bar">
+      <div class="bar">
+        <h1>Registro Departamento</h1>
+      </div>
+    </div>
+
+    <form [formGroup]="departamentoForm" (ngSubmit)="guardarDepartamento()">
+      <div class="form-column">
+        <label>Nombre:</label>
+        <input type="text" formControlName="NombreDepartamento" placeholder="Nombre del departamento" required>
+      </div>
+  
+      <div class="form-column">
+        <label>Numero:</label>
+        <input type="text"  formControlName="Numero" placeholder="Número" required>
+      </div>
+  
+      <div class="form-column">
+        <label>Calle:</label>
+        <input type="text" formControlName="Calle" placeholder="Calle" required>
+      </div>
+  
+      <div class="form-column">
+        <label>Colonia:</label>
+        <input type="text"  formControlName="Colonia" placeholder="Colonia" required>
+      </div>
+  
+      <div class="form-column">
+        <label>Codigo Postal:</label>
+        <input type="text" formControlName="Cp" placeholder="Código Postal" required>
+      </div>
+
+      <div class="form-column">
+        <button class="Guardar">Guardar</button>
+      </div>
+
+    </form>
+
+    
+
+    <div class="administradores-list">
+      <ul class="administrador-item" *ngFor="let depa of departamentos">
+        <div class="administrador-details">
+          <div class="administrador-info">
+            <div class="departamento-data">Nombre: {{ depa.NombreDepartamento }} </div>
+            <div class="departamento-data">Número: {{ depa.Direccion.Numero }}</div>
+            <div class="departamento-data">Calle: {{ depa.Direccion.Calle }}</div>
+            <div class="departamento-data">Colonia: {{ depa.Direccion.Colonia }}</div>
+            <div class="departamento-data">Código Postal: {{ depa.Direccion.Cp }}</div>
+          </div>
+          <div class="administrador-buttons">
+            <button class="edit" (click)="editarDepartamento(depa)">Editar</button>
+            <button class="delete" (click)="eliminarDepartamento(depa.NombreDepartamento)">Eliminar</button>
+          </div>
+        </div>
+      </ul>
+    </div>
