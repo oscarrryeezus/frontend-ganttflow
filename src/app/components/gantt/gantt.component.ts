@@ -6,8 +6,6 @@ import { Task } from '../../models/tasks';
 import { Link } from '../../models/link';
 import 'dhtmlx-gantt';
 
-declare var gantt: any; // Declaración de 'gantt' como variable global
-
 @Component({
     encapsulation: ViewEncapsulation.None,
     selector: 'gantt',
@@ -22,14 +20,14 @@ export class GanttComponent implements OnInit {
 
     ngOnInit() {
         if (isPlatformBrowser(this.platformId)) {
-            import('dhtmlx-gantt').then(() => {
+            import('dhtmlx-gantt').then(({ gantt }) => {
                 console.log('dhtmlx-gantt imported successfully');
+                console.log('gantt object:', gantt);
 
-                // Ahora, intenta acceder a la propiedad config de 'gantt'
-                if (gantt) {
-                    console.log('gantt object:', gantt);
+                // Ahora, intenta acceder a la propiedad config solo si está disponible en un entorno de navegador
+                if (typeof gantt !== 'undefined' && typeof gantt.config !== 'undefined') {
+                    console.log('gantt.config:', gantt.config);
 
-                    // Configuración de 'gantt' solo si está disponible
                     gantt.config.date_format = '%Y-%m-%d %H:%i';
                     gantt.init(this.ganttContainer.nativeElement);
                     gantt.config.readonly = true;
@@ -37,7 +35,7 @@ export class GanttComponent implements OnInit {
                     // Configurar columnas
                     gantt.config.columns = [
                         { name: "Empleado", label: "Empleado", width: 200, align: "center" },
-                        { name: "text", label: "Actividad", width: 150, align: "center" },
+                        { name: "text", label: "Actvidad", width: 150, align: "center" },
                         { name: "Sede", label: "Sede", width: 190, align: "center" },
                         { name: "Contrato", label: "Contrato", width: 120, align: "center" }
                     ];
@@ -75,8 +73,6 @@ export class GanttComponent implements OnInit {
                         // Parsear los datos a la Gantt
                         gantt.parse({ data });
                     });
-                } else {
-                    console.error('gantt object not available');
                 }
             }).catch(error => {
                 console.error('Error importing dhtmlx-gantt:', error);
