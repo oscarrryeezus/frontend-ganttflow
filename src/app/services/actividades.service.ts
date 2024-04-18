@@ -8,8 +8,7 @@ import { Actividades } from '../models/actividades';
 })
 export class ActividadesService {
 
-  private URL = 'https://backend-ganttflow.up.railway.app/api/actividades';
-  
+  private URL = 'http://localhost:3000/api/actividades';
 
   actividadesChanged = new Subject<Actividades[]>();
 

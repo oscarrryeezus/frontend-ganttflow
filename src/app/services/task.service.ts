@@ -6,7 +6,7 @@ import { firstValueFrom } from 'rxjs';
 
 @Injectable()
 export class TaskService {
-    private taskUrl = 'https://backend-ganttflow.up.railway.app/api/task';
+    private taskUrl = 'http://localhost:3000/api/task';
 
 
     constructor(private http: HttpClient) {}
