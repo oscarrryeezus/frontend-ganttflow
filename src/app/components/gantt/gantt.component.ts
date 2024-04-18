@@ -18,67 +18,30 @@ export class GanttComponent implements OnInit {
     constructor(private taskService: TaskService, private linkService: LinkService, @Inject(PLATFORM_ID) private platformId: Object) { }
 
     ngOnInit() {
-        if (isPlatformBrowser(this.platformId)) {
-            import('dhtmlx-gantt').then(({ gantt }) => {
-                console.log('dhtmlx-gantt imported successfully');
-                console.log('gantt object:', gantt);
+        gantt.config.date_format = '%Y-%m-%d %H:%i';
 
-                // Ahora, intenta acceder a la propiedad config
-                console.log('gantt.config:', gantt.config);
+        gantt.init(this.ganttContainer.nativeElement);
 
-                // Intenta acceder a otras propiedades o métodos de gantt
-               console.log('gantt.getVersion():', gantt['getVersion']());
+        if(!(gantt as any).$_initOnce){
+            (gantt as any).$_initOnce = true;
 
-                // Continúa con la inicialización de gantt
-                gantt.config.date_format = '%Y-%m-%d %H:%i';
-
-                gantt.init(this.ganttContainer.nativeElement);
-                gantt.config.readonly = true;
-
-                // Configurar columnas
-                gantt.config.columns = [
-                    { name: "Empleado", label: "Empleado", width: 200, align: "center" },
-                    { name: "text", label: "Actvidad", width: 150, align: "center" },
-                    { name: "Sede", label: "Sede", width: 190, align: "center" },
-                    { name: "Contrato", label: "Contrato", width: 120, align: "center" }
-                ];
-
-                // Configurar DataProcessor para permitir ediciones
-                const dp = gantt.createDataProcessor({
-                    task: {
-                        update: (data: Task) => this.taskService.update(data),
-                        create: (data: Task) => this.taskService.insert(data),
-                        delete: (id: any) => this.taskService.remove(id),
-                    },
-                    link: {
-                        update: (data: Link) => this.linkService.update(data),
-                        create: (data: Link) => this.linkService.insert(data),
-                        delete: (id: any) => this.linkService.remove(id),
-                    }
-                });
-
-                // Obtener datos de las tareas
-                this.taskService.get().then((tasks: Task[]) => {
-                    // Mapear los datos de las tareas al formato esperado por la Gantt
-                    const data = tasks.map(task => ({
-                        id: task.id,
-                        text: task.text,
-                        start_date: task.start_date,
-                        end_date: task.end_date,
-                        progress: task.progress,
-                        duration: task.duration,
-                        parent: task.parent,
-                        Empleado: task.empleado,
-                        Sede: task.sede,
-                        Contrato: task.contrato
-                    }));
-
-                    // Parsear los datos a la Gantt
-                    gantt.parse({ data });
-                });
-            }).catch(error => {
-                console.error('Error importing dhtmlx-gantt:', error);
+            const dp = gantt.createDataProcessor({
+                task: {
+                    update: (data: Task) => this.taskService.update(data),
+                    create: (data: Task) => this.taskService.insert(data),
+                    delete: (id: any) => this.taskService.remove(id),
+                },
+                link: {
+                    update: (data: Link) => this.linkService.update(data),
+                    create: (data: Link) => this.linkService.insert(data),
+                    delete: (id: any) => this.linkService.remove(id),
+                }
             });
         }
+
+        Promise.all([this.taskService.get(), this.linkService.get()])
+            .then(([data, links]) => {
+                gantt.parse({ data, links });
+            });
     }
 }
