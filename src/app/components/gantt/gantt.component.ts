@@ -20,6 +20,12 @@ export class GanttComponent implements OnInit {
     ngOnInit() {
         if (isPlatformBrowser(this.platformId)) {
             import('dhtmlx-gantt').then(({ gantt }) => {
+                console.log('dhtmlx-gantt imported successfully');
+                console.log('gantt object:', gantt);
+
+                // Ahora, intenta acceder a la propiedad config
+                console.log('gantt.config:', gantt.config);
+
                 gantt.config.date_format = '%Y-%m-%d %H:%i';
                 gantt.init(this.ganttContainer.nativeElement);
                 gantt.config.readonly = true;
@@ -65,6 +71,8 @@ export class GanttComponent implements OnInit {
                     // Parsear los datos a la Gantt
                     gantt.parse({ data });
                 });
+            }).catch(error => {
+                console.error('Error importing dhtmlx-gantt:', error);
             });
         }
     }
