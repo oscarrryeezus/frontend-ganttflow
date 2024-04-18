@@ -1,10 +1,9 @@
 import { Component, ElementRef, Inject, OnInit, PLATFORM_ID, ViewChild, ViewEncapsulation } from '@angular/core';
-import { isPlatformBrowser } from '@angular/common';
 import { TaskService } from '../../services/task.service';
 import { LinkService } from '../../services/link.service';
 import { Task } from '../../models/tasks';
 import { Link } from '../../models/link';
-import 'dhtmlx-gantt';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
     encapsulation: ViewEncapsulation.None,
@@ -24,56 +23,54 @@ export class GanttComponent implements OnInit {
                 console.log('dhtmlx-gantt imported successfully');
                 console.log('gantt object:', gantt);
 
-                // Ahora, intenta acceder a la propiedad config solo si está disponible en un entorno de navegador
-                if (typeof gantt !== 'undefined' && typeof gantt.config !== 'undefined') {
-                    console.log('gantt.config:', gantt.config);
+                // Ahora, intenta acceder a la propiedad config
+                console.log('gantt.config:', gantt.config);
 
-                    gantt.config.date_format = '%Y-%m-%d %H:%i';
-                    gantt.init(this.ganttContainer.nativeElement);
-                    gantt.config.readonly = true;
+                gantt.config.date_format = '%Y-%m-%d %H:%i';
+                gantt.init(this.ganttContainer.nativeElement);
+                gantt.config.readonly = true;
 
-                    // Configurar columnas
-                    gantt.config.columns = [
-                        { name: "Empleado", label: "Empleado", width: 200, align: "center" },
-                        { name: "text", label: "Actvidad", width: 150, align: "center" },
-                        { name: "Sede", label: "Sede", width: 190, align: "center" },
-                        { name: "Contrato", label: "Contrato", width: 120, align: "center" }
-                    ];
+                // Configurar columnas
+                gantt.config.columns = [
+                    { name: "Empleado", label: "Empleado", width: 200, align: "center" },
+                    { name: "text", label: "Actvidad", width: 150, align: "center" },
+                    { name: "Sede", label: "Sede", width: 190, align: "center" },
+                    { name: "Contrato", label: "Contrato", width: 120, align: "center" }
+                ];
 
-                    // Configurar DataProcessor para permitir ediciones
-                    const dp = gantt.createDataProcessor({
-                        task: {
-                            update: (data: Task) => this.taskService.update(data),
-                            create: (data: Task) => this.taskService.insert(data),
-                            delete: (id: any) => this.taskService.remove(id),
-                        },
-                        link: {
-                            update: (data: Link) => this.linkService.update(data),
-                            create: (data: Link) => this.linkService.insert(data),
-                            delete: (id: any) => this.linkService.remove(id),
-                        }
-                    });
+                // Configurar DataProcessor para permitir ediciones
+                const dp = gantt.createDataProcessor({
+                    task: {
+                        update: (data: Task) => this.taskService.update(data),
+                        create: (data: Task) => this.taskService.insert(data),
+                        delete: (id: any) => this.taskService.remove(id),
+                    },
+                    link: {
+                        update: (data: Link) => this.linkService.update(data),
+                        create: (data: Link) => this.linkService.insert(data),
+                        delete: (id: any) => this.linkService.remove(id),
+                    }
+                });
 
-                    // Obtener datos de las tareas
-                    this.taskService.get().then((tasks: Task[]) => {
-                        // Mapear los datos de las tareas al formato esperado por la Gantt
-                        const data = tasks.map(task => ({
-                            id: task.id,
-                            text: task.text,
-                            start_date: task.start_date,
-                            end_date: task.end_date,
-                            progress: task.progress,
-                            duration: task.duration,
-                            parent: task.parent,
-                            Empleado: task.empleado,
-                            Sede: task.sede,
-                            Contrato: task.contrato
-                        }));
+                // Obtener datos de las tareas
+                this.taskService.get().then((tasks: Task[]) => {
+                    // Mapear los datos de las tareas al formato esperado por la Gantt
+                    const data = tasks.map(task => ({
+                        id: task.id,
+                        text: task.text,
+                        start_date: task.start_date,
+                        end_date: task.end_date,
+                        progress: task.progress,
+                        duration: task.duration,
+                        parent: task.parent,
+                        Empleado: task.empleado,
+                        Sede: task.sede,
+                        Contrato: task.contrato
+                    }));
 
-                        // Parsear los datos a la Gantt
-                        gantt.parse({ data });
-                    });
-                }
+                    // Parsear los datos a la Gantt
+                    gantt.parse({ data });
+                });
             }).catch(error => {
                 console.error('Error importing dhtmlx-gantt:', error);
             });
