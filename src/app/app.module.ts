@@ -35,11 +35,15 @@ import { GanttAdminComponent } from './components/gantts/gantt-admin/gantt-admin
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './services/in-memory-data.service';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { ActividadesComponent } from './components/actividades/actividades.component';
+import { TaskService } from './services/task.service';
+import { VacacionesService } from './services/vacaciones.service';
 import { SolicitudVacacionComponent } from './components/solicitud-vacacion/solicitud-vacacion.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    ActividadesComponent,
     NavigationBarComponent,
     HomeComponent,
     RegisterEmployeComponent,
@@ -85,7 +89,9 @@ import { SolicitudVacacionComponent } from './components/solicitud-vacacion/soli
     CrudContratoComponent,
     RegisterEmployeComponent,
     LoginComponent,
+    TaskService,
     CookieService,
+    VacacionesService
   ],
 })
 export class AppModule { }

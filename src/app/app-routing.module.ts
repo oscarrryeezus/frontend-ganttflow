@@ -22,6 +22,8 @@ import { DepartamentoComponent } from './components/departamento/departamento.co
 import { GanttEmpleadoComponent } from './components/gantts/gantt-empleado/gantt-empleado.component';
 import { GanttComponent } from './components/gantt/gantt.component';
 import { GanttAdminComponent } from './components/gantts/gantt-admin/gantt-admin.component';
+import { ActividadesComponent } from './components/actividades/actividades.component';
+
 
 
 const routes: Routes = [
@@ -50,7 +52,7 @@ const routes: Routes = [
   { path: 'admin', component: CrudAdminComponent, canActivate: [SuperAdministradorGuardia,AdministradorGuardia]},
   { path: 'solicitudsupad', component: SolicitudSupAdminComponent, canActivate: [SuperAdministradorGuardia,AdministradorGuardia]},
   { path: 'sede', component: SedesComponent, canActivate:  [SuperAdministradorGuardia,AdministradorGuardia]},
-
+  { path: 'actividades', component:ActividadesComponent, canActivate: [AdministradorGuardia]},
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
