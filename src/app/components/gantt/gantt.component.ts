@@ -27,7 +27,7 @@ export class GanttComponent implements OnInit {
                 console.log('gantt.config:', gantt.config);
 
                 // Intenta acceder a otras propiedades o métodos de gantt
-                console.log('gantt.getVersion():', gantt.getVersion());
+               console.log('gantt.getVersion():', gantt['getVersion']());
 
                 // Continúa con la inicialización de gantt
                 gantt.config.date_format = '%Y-%m-%d %H:%i';
