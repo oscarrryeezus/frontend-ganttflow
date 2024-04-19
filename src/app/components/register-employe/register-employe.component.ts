@@ -535,7 +535,7 @@ ngOnInit(): void {
 
 
 
-jsonData: any; // Variable para almacenar la información del archivo JSON
+  jsonData: any; // Variable para almacenar la información del archivo JSON
 
   onFileSelected(event: any) {
     const file: File = event.target.files[0];
@@ -561,14 +561,12 @@ jsonData: any; // Variable para almacenar la información del archivo JSON
       this.empleadoService.crearMultiplesEmpleados(this.jsonData).subscribe(
         response => {
           console.log('Datos enviados correctamente:', response);
-          // Aquí puedes manejar la respuesta del servidor si es necesario
+          this.getEmpleados()
         },
         error => {
           console.error('Error al enviar los datos:', error);
-          // Aquí puedes manejar el error si ocurre alguno
         }
       );
-      this.getEmpleados()
     } else {
       console.error('No hay datos JSON para enviar.');
     }

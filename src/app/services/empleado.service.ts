@@ -40,7 +40,7 @@ export class EmpleadoService {
   }
 
   crearMultiplesEmpleados(datosEmpleados: any[]): Observable<any> {
-    return this.http.post(`${this.URL}/multiples`, datosEmpleados);
+    return this.http.post(`${this.URL}/cargamasiva`, datosEmpleados);
   }
 
 }
