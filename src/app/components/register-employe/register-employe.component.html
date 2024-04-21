@@ -7,7 +7,6 @@
   <div class="container">
     <div class="container-bar">
       <div class="bar">
-
         <button (click)="toggleForm()">
           <span *ngIf="isIconKeyboardf" class="material-symbols-outlined">keyboard_arrow_up</span>
           <span *ngIf="!isIconKeyboardf" class="material-symbols-outlined">keyboard_arrow_down</span>
@@ -18,149 +17,160 @@
 
     <form *ngIf="showForm" class="form" #empleadoForm="ngForm" (ngSubmit)="submitForm()">
       <div class="form-column">
-        <label >Nombre:</label>
-        <input type="text" name="Nombre" [(ngModel)]="empleado.Nombre" required>
+        <label>Nombre:</label>
+        <input type="text" name="Nombre" [(ngModel)]="empleado.Nombre" required />
       </div>
 
       <div class="form-column">
-        <label >Apellido Paterno:</label>
-        <input type="text" name="AppE" [(ngModel)]="empleado.AppE" required>
+        <label>Apellido Paterno:</label>
+        <input type="text" name="AppE" [(ngModel)]="empleado.AppE" required />
       </div>
 
       <div class="form-column">
-        <label >Apellido Materno:</label>
-        <input type="text" name="ApmE" [(ngModel)]="empleado.ApmE" required>
+        <label>Apellido Materno:</label>
+        <input type="text" name="ApmE" [(ngModel)]="empleado.ApmE" required />
       </div>
 
       <div class="form-column">
-        <label >Fecha de Nacimiendo:</label>
-        <input type="date" name="FechaNac" [(ngModel)]="empleado.FechaNac " required>
+        <label>Fecha de Nacimiendo:</label>
+        <input type="date" name="FechaNac" [(ngModel)]="empleado.FechaNac" required />
       </div>
 
       <div class="form-column">
-        <label >Correo:</label>
-        <input type="email" name="Correo" [(ngModel)]="empleado.Correo" required>
+        <label>Correo:</label>
+        <input type="email" name="Correo" [(ngModel)]="empleado.Correo" required />
       </div>
 
       <div class="form-column">
-        <label >Contraseña:</label>
-        <input type="password" name="Correo" [(ngModel)]="empleado.Contrasena" required>
+        <label>Contraseña:</label>
+        <input type="password" name="Correo" [(ngModel)]="empleado.Contrasena" required />
       </div>
 
       <div class="form-column">
-        <label >Region</label>
+        <label>Region</label>
         <select name="Region" [(ngModel)]="empleado.Region" class="text-6">
-          <option *ngFor="let sede of sedes" [value]="sede.region">{{ sede.region }}</option>
+          <option *ngFor="let sede of sedes" [value]="sede.region">
+            {{ sede.region }}
+          </option>
         </select>
       </div>
 
       <div class="form-column">
-        <label >Area:</label>
+        <label>Area:</label>
         <select name="Area" [(ngModel)]="empleado.AreaTrabajo" class="text-6">
-          <option *ngFor="let area of areas" [value]="area.NombreArea">{{ area.NombreArea }}</option>
+          <option *ngFor="let area of areas" [value]="area.NombreArea">
+            {{ area.NombreArea }}
+          </option>
         </select>
       </div>
 
       <div class="form-column">
         <label>Departamento:</label>
         <select name="Departamento" [(ngModel)]="empleado.Departamento" class="text-6">
-          <option *ngFor="let departamento of departamentos" [value]="departamento.NombreDepartamento">{{ departamento.NombreDepartamento }}</option>
+          <option *ngFor="let departamento of departamentos" [value]="departamento.NombreDepartamento">
+            {{ departamento.NombreDepartamento }}
+          </option>
         </select>
       </div>
 
       <div class="form-column">
-        <label > </label>
-
+        <label> </label>
       </div>
 
       <div class="form-column">
         <label>Contrato:</label>
         <select name="Contrato" [(ngModel)]="empleado.Contrato" class="text-6" (change)="onContractChange()">
-          <option *ngFor="let contrato of contratos" [value]="contrato.TipoContrato">{{ contrato.TipoContrato }}</option>
+          <option *ngFor="let contrato of contratos" [value]="contrato.TipoContrato">
+            {{ contrato.TipoContrato }}
+          </option>
         </select>
-
       </div>
 
       <div class="form-column">
         <label>Turno:</label>
         <select name="Turno" [(ngModel)]="empleado.TurnoActual" (change)="asignarHorasTurno(empleado.TurnoActual)">
-          <option *ngFor="let turno of selectedContract?.TurnosContrato" [ngValue]="turno">{{ turno.inicio }} - {{ turno.fin }}</option>
+          <option *ngFor="let turno of selectedContract?.TurnosContrato" [ngValue]="turno">
+            {{ turno.inicio }} - {{ turno.fin }}
+          </option>
         </select>
       </div>
 
-
-
       <div class="form-column">
-        <label >Fecha de Training:</label>
+        <label>Fecha de Training:</label>
         <input type="date" name="Training.Fecha" [(ngModel)]="empleado.HorarioTraining.Fecha" />
       </div>
 
       <div class="form-column">
-        <label >Hora inicial Training:</label>
+        <label>Hora inicial Training:</label>
         <input type="time" name="HorarioTraining.HoraInicial" [(ngModel)]="empleado.HorarioTraining.HoraInicial" />
       </div>
 
       <div class="form-column">
-        <label >Hora final Training:</label>
+        <label>Hora final Training:</label>
         <input type="time" name="HorarioTraining.HoraFinal" [(ngModel)]="empleado.HorarioTraining.HoraFinal" />
       </div>
 
       <div class="form-column">
-        <label > </label>
-
+        <label> </label>
       </div>
 
       <div class="form-column">
-        <label >Administrador</label>
+        <label>Administrador</label>
         <select name="administrador" [(ngModel)]="empleado.NombreAdmin" class="text-6">
-          <option *ngFor="let administrador of administradores" [value]="administrador.NombreAdmin">{{ administrador.NombreAdmin }}</option>
+          <option *ngFor="let administrador of administradores" [value]="administrador.NombreAdmin">
+            {{ administrador.NombreAdmin }}
+          </option>
         </select>
       </div>
 
       <div class="form-column">
-        <label > </label>
-
+        <label> </label>
       </div>
 
       <div class="form-column">
-        <label >Fecha de Ingreso</label>
+        <label>Fecha de Ingreso</label>
         <input type="date" name="Fecha de Ingreso" [(ngModel)]="empleado.FechaDeIngreso" class="text-6" />
       </div>
 
       <div class="form-column">
-        <label > </label>
-
+        <label> </label>
       </div>
 
       <div class="form-column">
-        <button type="submit" class="text-1-1" >{{ edit ? 'Actualizar' : 'Agregar' }}</button>
+        <button type="submit" class="text-1-1">
+          {{ edit ? "Actualizar" : "Agregar" }}
+        </button>
       </div>
 
-
-
-
       <div class="form-column">
-        <button type="button" class="text-1-1" (click)="cancelarEdicion()" *ngIf="edit">Cancelar</button>
+        <button type="button" class="text-1-1" (click)="cancelarEdicion()" *ngIf="edit">
+          Cancelar
+        </button>
       </div>
     </form>
 
-
-<!--DURAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA-->
-    <div class="bar">
-      <h1>Carga Masiva</h1>
-    </div>
-    <div>
-      <div>
-        <span>Adjunta tu archivo</span>
-        <input type="file" (change)="onFileSelected($event)" />
-      </div>
-      
-      <div>
-          <button (click)="enviarDatosJsonAlServidor()">Enviar</button>
+    <!--DURAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA-->
+    <div class="container-bar">
+      <div class="bar">
+        <button (click)="toggleCargaMasiva()">
+          <span *ngIf="isIconKeyboardmc" class="material-symbols-outlined">keyboard_arrow_up</span>
+          <span *ngIf="!isIconKeyboardmc" class="material-symbols-outlined">keyboard_arrow_down</span>
+        </button>
+        <h1>Carga Masiva</h1>
       </div>
     </div>
 
 
+    <div class="carga-masiva" *ngIf="showCargaMasiva">
+      <div class="carga-masiva-header">
+        <span class="cmClass">Adjunta tu archivo</span>
+        <input type="file" (change)="onFileSelected($event)" class="cm-input" />
+      </div>
+
+      <div class="carga-masiva-footer">
+        <button class="cm-button" (click)="enviarDatosJsonAlServidor()">Enviar</button>
+      </div>
+    </div>
 
     <div class="table">
       <div class="bar">
@@ -168,47 +178,48 @@
           <span *ngIf="isIconKeyboard" class="material-symbols-outlined">keyboard_arrow_up</span>
           <span *ngIf="!isIconKeyboard" class="material-symbols-outlined">keyboard_arrow_down</span>
         </button>
-      <h1>Filtro</h1>
+        <h1>Filtro</h1>
       </div>
-      
-      <div class="filter-bar" *ngIf="showFilters">
-        <input type="text" [(ngModel)]="searchTerm" placeholder="Buscar por nombre">
 
+      <div class="filter-bar" *ngIf="showFilters">
+        <input type="text" [(ngModel)]="searchTerm" placeholder="Buscar por nombre" />
 
         <select [(ngModel)]="selectedDepartment">
           <option value="">Todos los departamentos</option>
-          <option *ngFor="let departamento of departamentos" [value]="departamento.NombreDepartamento">{{ departamento.NombreDepartamento }}</option>
+          <option *ngFor="let departamento of departamentos" [value]="departamento.NombreDepartamento">
+            {{ departamento.NombreDepartamento }}
+          </option>
         </select>
-
 
         <select [(ngModel)]="selectedArea">
           <option value="">Todas las áreas</option>
-          <option *ngFor="let area of areas" [value]="area.NombreArea">{{ area.NombreArea }}</option>
+          <option *ngFor="let area of areas" [value]="area.NombreArea">
+            {{ area.NombreArea }}
+          </option>
         </select>
-
 
         <select [(ngModel)]="selectedContrato">
           <option value="">Todas los Contratos</option>
-          <option *ngFor="let contrato of contratos" [value]="contrato.TipoContrato">{{ contrato.TipoContrato }}</option>
+          <option *ngFor="let contrato of contratos" [value]="contrato.TipoContrato">
+            {{ contrato.TipoContrato }}
+          </option>
         </select>
 
         <select [(ngModel)]="selectedSede">
           <option value="">Todas las Sedes</option>
-          <option *ngFor="let sede of sedes" [value]="sede.region">{{ sede.region }}</option>
+          <option *ngFor="let sede of sedes" [value]="sede.region">
+            {{ sede.region }}
+          </option>
         </select>
-
 
         <button (click)="clearFilters()">Limpiar</button>
       </div>
 
-
-
-
-
       <div class="bar">
         <button (click)="toggleEmpleados()">
           <span *ngIf="isIconKeyboarde" class="material-symbols-outlined">keyboard_arrow_up</span>
-          <span *ngIf="!isIconKeyboarde" class="material-symbols-outlined"> keyboard_arrow_down</span>
+          <span *ngIf="!isIconKeyboarde" class="material-symbols-outlined">
+            keyboard_arrow_down</span>
         </button>
         <h1>Empleados registrados</h1>
       </div>
@@ -217,19 +228,41 @@
         <ul class="administrador-item" *ngFor="let empleado of filteredEmpleados">
           <div class="administrador-details">
             <div class="administrador-info">
-              <div class="administrador-name">{{ empleado.Nombre }} {{ empleado.AppE }} {{ empleado.ApmE }}</div>
-              <div class="administrador-data">Fecha de nacimiento: {{ empleado.FechaNac | date:'dd/MM/yyyy' }}</div>
-              <div class="administrador-data">Correo Electronico: {{ empleado.Correo }}</div>
-              <div class="administrador-data">Contraseña:{{ empleado.Contrasena }}</div>
-              <div class="administrador-data">Region: {{ empleado.Region }}</div>
-              <div class="administrador-data">Administrador: {{ empleado.NombreAdmin }}</div>
-              <div class="administrador-data">Departamento: {{ empleado.Departamento }}</div>
-              <div class="administrador-data">Area: {{ empleado.AreaTrabajo }}</div>
-              <div class="administrador-data">Fecha de Ingreso: {{ empleado.FechaDeIngreso | date:'dd/MM/yyyy' }}</div>
-              <div class="administrador-data">Contrato: {{ empleado.Contrato }}</div>
+              <div class="administrador-name">
+                {{ empleado.Nombre }} {{ empleado.AppE }} {{ empleado.ApmE }}
+              </div>
+              <div class="administrador-data">
+                Fecha de nacimiento:
+                {{ empleado.FechaNac | date : "dd/MM/yyyy" }}
+              </div>
+              <div class="administrador-data">
+                Correo Electronico: {{ empleado.Correo }}
+              </div>
+              <div class="administrador-data">
+                Contraseña:{{ empleado.Contrasena }}
+              </div>
+              <div class="administrador-data">
+                Region: {{ empleado.Region }}
+              </div>
+              <div class="administrador-data">
+                Administrador: {{ empleado.NombreAdmin }}
+              </div>
+              <div class="administrador-data">
+                Departamento: {{ empleado.Departamento }}
+              </div>
+              <div class="administrador-data">
+                Area: {{ empleado.AreaTrabajo }}
+              </div>
+              <div class="administrador-data">
+                Fecha de Ingreso:
+                {{ empleado.FechaDeIngreso | date : "dd/MM/yyyy" }}
+              </div>
+              <div class="administrador-data">
+                Contrato: {{ empleado.Contrato }}
+              </div>
             </div>
             <div class="administrador-buttons">
-              <button class="edit" (click)="editarEmpleado(empleado) ">
+              <button class="edit" (click)="editarEmpleado(empleado)">
                 <i class="fas fa-edit"></i> Actualizar
               </button>
 
@@ -238,7 +271,6 @@
               </button>
             </div>
           </div>
-
         </ul>
       </div>
     </div>
