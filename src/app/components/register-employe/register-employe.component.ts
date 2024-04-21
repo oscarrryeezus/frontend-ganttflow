@@ -42,10 +42,10 @@ export class RegisterEmployeComponent implements OnInit {
     ApmE: '',
     FechaNac: new Date(),
     Correo: '',
-    Contrasena:'',
+    Contrasena: '',
     Region: '',
     AreaTrabajo: '',
-    Departamento:'',
+    Departamento: '',
     Contrato: '',
     TurnoActual: {
       inicio: '',
@@ -60,10 +60,10 @@ export class RegisterEmployeComponent implements OnInit {
     FechaDeIngreso: new Date()
   };
 
-  edit: boolean= false;
+  edit: boolean = false;
 
   isEditRoute: boolean = false;
-  areas:any[] = [];
+  areas: any[] = [];
   departamentos: any[] = [];
   contratos: any[] = [];
   sedes: any[] = [];
@@ -86,10 +86,10 @@ export class RegisterEmployeComponent implements OnInit {
     private contratoService: ContratoService,
     private areaService: AreaService,
     private sedeService: SedeService,
-    private correoService: CorreoService, 
+    private correoService: CorreoService,
     private cargaMasivaService: CargaMasivaService,
     private cookieService: CookieService
-  ) {}
+  ) { }
 
   asignarHorasTurno(turno: any) {
     this.horaInicio = turno.inicio; // asignar el valor de inicio del turno
@@ -103,10 +103,10 @@ export class RegisterEmployeComponent implements OnInit {
       ApmE: '',
       FechaNac: new Date(),
       Correo: '',
-      Contrasena:'',
+      Contrasena: '',
       Region: '',
       AreaTrabajo: '',
-      Departamento:'',
+      Departamento: '',
       Contrato: '',
       TurnoActual: {
         inicio: '',
@@ -135,10 +135,10 @@ export class RegisterEmployeComponent implements OnInit {
       ApmE: '',
       FechaNac: new Date(),
       Correo: '',
-      Contrasena:'',
+      Contrasena: '',
       Region: '',
       AreaTrabajo: '',
-      Departamento:'',
+      Departamento: '',
       Contrato: '',
       TurnoActual: {
         inicio: '',
@@ -248,10 +248,10 @@ export class RegisterEmployeComponent implements OnInit {
               ApmE: '',
               FechaNac: new Date(),
               Correo: '',
-              Contrasena:'',
+              Contrasena: '',
               Region: '',
               AreaTrabajo: '',
-              Departamento:'',
+              Departamento: '',
               Contrato: '',
               TurnoActual: {
                 inicio: '',
@@ -288,21 +288,28 @@ export class RegisterEmployeComponent implements OnInit {
   showFilters: boolean = true;
   showEmpleados: boolean = true;
   showForm: boolean = true;
+  showCargaMasiva: boolean = true;
+
+  isIconKeyboardmc: boolean = true;
   isIconKeyboard: boolean = true;
   isIconKeyboardf: boolean = true;
   isIconKeyboarde: boolean = true;
 
-toggleFilters() {
-  this.showFilters = !this.showFilters;
-  this.isIconKeyboard = !this.isIconKeyboard;
-}
+  toggleFilters() {
+    this.showFilters = !this.showFilters;
+    this.isIconKeyboard = !this.isIconKeyboard;
+  }
 
-toggleForm() {
-  this.showForm = !this.showForm;
-  this.isIconKeyboardf = !this.isIconKeyboardf;
-}
+  toggleForm() {
+    this.showForm = !this.showForm;
+    this.isIconKeyboardf = !this.isIconKeyboardf;
+  }
 
-  
+  toggleCargaMasiva(){
+    this.showCargaMasiva = !this.showCargaMasiva;
+    this.isIconKeyboardmc = !this.isIconKeyboardmc; 
+  }
+
 
   toggleEmpleados() {
     this.showEmpleados = !this.showEmpleados;
@@ -352,12 +359,12 @@ toggleForm() {
     const correoString: string = empleado.Correo.valueOf();
     this.empleado.FechaNac = new Date(this.empleado.FechaNac);
 
-      this.empleado.HorarioTraining.Fecha = new Date(this.empleado.HorarioTraining.Fecha);
+    this.empleado.HorarioTraining.Fecha = new Date(this.empleado.HorarioTraining.Fecha);
 
-      this.enviarNotificacion( //aquie cuando se modifique
-          'Cuenta como empleado modificada',
-          'La cuenta para Gantt Flow ha sido modificada exitosamente.',
-          correoString);
+    this.enviarNotificacion( //aquie cuando se modifique
+      'Cuenta como empleado modificada',
+      'La cuenta para Gantt Flow ha sido modificada exitosamente.',
+      correoString);
     this.empleadoService.actualizarEmpleado(correoString, empleado).subscribe(
       (response) => {
         console.log('Empleado actualizado exitosamente:', response);
@@ -379,9 +386,9 @@ toggleForm() {
     console.log(`Eliminar empleado: ${empleado.Nombre}`);
     const correoString: string = empleado.Correo.valueOf();
     this.enviarNotificacion( //aquie cuando se modifique
-          'Cuenta como empleado ELIMINDADA',
-          `Estimado/a ${empleado.Nombre}, Nos dirigimos a usted para informarle que la cuenta asociada a su perfil de empleado en Gantt Flow ha sido eliminada exitosamente. Agradecemos su colaboración y participación en nuestra plataforma hasta el momento. Si tiene alguna pregunta o necesita asistencia adicional, no dude en ponerse en contacto con nuestro equipo de soporte. Atentamente GanttFLow `,
-          correoString);
+      'Cuenta como empleado ELIMINDADA',
+      `Estimado/a ${empleado.Nombre}, Nos dirigimos a usted para informarle que la cuenta asociada a su perfil de empleado en Gantt Flow ha sido eliminada exitosamente. Agradecemos su colaboración y participación en nuestra plataforma hasta el momento. Si tiene alguna pregunta o necesita asistencia adicional, no dude en ponerse en contacto con nuestro equipo de soporte. Atentamente GanttFLow `,
+      correoString);
 
     // Aquí debes llamar al método correspondiente en tu servicio para eliminar el empleado por correo
     this.empleadoService.eliminarEmpleado(empleado.Correo).subscribe(
@@ -468,7 +475,7 @@ toggleForm() {
     this.sedeService.getSede().subscribe(
       (data: any) => {
         this.sedes = data;
-        },
+      },
       (error: any) => {
         console.error('Error al obtener la lista de sedes:', error);
       }
@@ -479,8 +486,8 @@ toggleForm() {
   searchTerm: string = '';
   selectedDepartment: string = '';
   selectedArea: string = '';
-  selectedContrato : string = '';
-  selectedSede : string = '';
+  selectedContrato: string = '';
+  selectedSede: string = '';
 
 
   get filteredEmpleados(): Empleado[] {
@@ -488,8 +495,8 @@ toggleForm() {
       (empleado.Nombre.toLowerCase().includes(this.searchTerm.toLowerCase()) || this.searchTerm === '') &&
       (this.selectedDepartment === '' || empleado.Departamento === this.selectedDepartment) &&
       (this.selectedArea === '' || empleado.AreaTrabajo === this.selectedArea) &&
-      (this.selectedContrato === '' || empleado.Contrato ===  this.selectedContrato) &&
-      (this.selectedSede === '' || empleado.Sede ===  this.selectedSede)
+      (this.selectedContrato === '' || empleado.Contrato === this.selectedContrato) &&
+      (this.selectedSede === '' || empleado.Sede === this.selectedSede)
     );
   }
 
@@ -500,30 +507,30 @@ toggleForm() {
     this.selectedContrato = '';
   }
 
-ngOnInit(): void {
-  this.token = this.cookieService.get('token');
-  this.cookie = this.cookieService.check('token');
+  ngOnInit(): void {
+    this.token = this.cookieService.get('token');
+    this.cookie = this.cookieService.check('token');
 
-  if (!this.cookie || !this.token) {
-    this.router.navigate(['login']);
-    this.navbarLogin = true;
-    return;
-  }
+    if (!this.cookie || !this.token) {
+      this.router.navigate(['login']);
+      this.navbarLogin = true;
+      return;
+    }
 
-  this.tokenDecodificado = jwtDecode.jwtDecode(this.token);
+    this.tokenDecodificado = jwtDecode.jwtDecode(this.token);
 
-  this.determinarBarraDeNavegacion();
+    this.determinarBarraDeNavegacion();
 
-  this.getEmpleados();
+    this.getEmpleados();
     this.getDepartamentos();
     this.getAdministradores();
     this.getContratos();
     this.getAreas();
     this.getSedes();
-}
+  }
 
 
-//loquelemovi jaja sludossadIUGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG
+  //loquelemovi jaja sludossadIUGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG
 
 
 
@@ -584,51 +591,51 @@ ngOnInit(): void {
 
 
 
-readFile(file: File) {
-  const reader = new FileReader();
-  reader.onload = (e: any) => {
-    const contents = e.target.result;
-    // Aquí puedes procesar el contenido del archivo según sea necesario
-    console.log(contents);
-  };
-  reader.readAsText(file);
-}
-
-enviarNotificacion(asunto: string, mensaje: string, correo: string): void {
-  const correoData = {
-    asunto: asunto,
-    mensaje: mensaje,
-    correo: correo
-  };
-
-  this.correoService.envioCorreo(correoData).subscribe(
-    () => {
-      console.log('Correo enviado con éxito');
-      console.log(correoData)
-    },
-    error => {
-      console.error('Error al enviar el correo:', error);
-      console.log(correoData)
-      }
-  );
-}
-
-//navbar
-
-
-determinarBarraDeNavegacion(): void {
-  switch (this.tokenDecodificado.Role) {
-    case 'Superadministrador':
-      this.navBarSuper = true;
-      break;
-    case 'Administrador':
-      this.navBarAdmin = true;
-      break;
-    case 'Empleado':
-      this.navBarEmpleado = true;
-      break;
+  readFile(file: File) {
+    const reader = new FileReader();
+    reader.onload = (e: any) => {
+      const contents = e.target.result;
+      // Aquí puedes procesar el contenido del archivo según sea necesario
+      console.log(contents);
+    };
+    reader.readAsText(file);
   }
-  this.navbarLogin = false;
-}
+
+  enviarNotificacion(asunto: string, mensaje: string, correo: string): void {
+    const correoData = {
+      asunto: asunto,
+      mensaje: mensaje,
+      correo: correo
+    };
+
+    this.correoService.envioCorreo(correoData).subscribe(
+      () => {
+        console.log('Correo enviado con éxito');
+        console.log(correoData)
+      },
+      error => {
+        console.error('Error al enviar el correo:', error);
+        console.log(correoData)
+      }
+    );
+  }
+
+  //navbar
+
+
+  determinarBarraDeNavegacion(): void {
+    switch (this.tokenDecodificado.Role) {
+      case 'Superadministrador':
+        this.navBarSuper = true;
+        break;
+      case 'Administrador':
+        this.navBarAdmin = true;
+        break;
+      case 'Empleado':
+        this.navBarEmpleado = true;
+        break;
+    }
+    this.navbarLogin = false;
+  }
 
 }
